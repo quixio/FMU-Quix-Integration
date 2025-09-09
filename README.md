@@ -1,35 +1,16 @@
-# MATLAB Quix Integration
+# FMU Quix Integration
 
-Quix enables developers to run MATLAB code in real-time streaming pipelines.  
-This repository brings together different integration options, depending on your needs and MATLAB version.
+Quix enables developers to run FMU models in real-time streaming pipelines.  
 
 ## Why This Project?
 
-MATLAB is a powerful environment for numerical computing, but deploying MATLAB functions into streaming pipelines is not always straightforward. With Quix, you can:
+The Functional Mock-up Interface (FMI) is an open standard that enables the exchange and co-simulation of dynamic models across different tools. Models packaged as Functional Mock-up Units (FMUs) are widely used in mechanical, automotive, and multi-physics engineering.
 
-- Stream input data from Kafka topics
-- Run MATLAB code in real time
-- Publish transformed results back to Kafka
+However, integrating FMUs into real-time streaming pipelines is not always straightforward. With Quix, you can:
+- Ingest live data from Kafka topics into your FMU models
+- Run simulations or co-simulations in real time
+- Stream the FMU outputs back to Kafka for monitoring, control, or analytics
 
-## Available Integration Options
-
-We provide three templates, showcasing two different integration strategies:
-
-1. **MATLAB Wheel [Template](https://github.com/quixio/matlab-quix-integration/tree/main/matlab-wheel)**  
-   Recommended. Compile MATLAB functions into Python-compatible `.whl` packages and run them seamlessly inside Quix.
-
-2. **MATLAB Engine [2023b](https://github.com/quixio/matlab-quix-integration/tree/main/matlab-docker-2023b) | [2025a](https://github.com/quixio/matlab-quix-integration/tree/main/matlab-docker-2025a)**  
-   Run MATLAB functions directly in Quix using a MATLAB Engine instance. Examples provided both for 2023b and 2025a versions.
-
-
-#### MATLAB Engine VS MATLAB Wheel
-
-| Method          | Advantages | Disadvantages                                                                                                                          |
-|-----------------|------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| **MATLAB Wheel** | - Compiles MATLAB code into Python (`.whl`) → portable<br>- No MATLAB license needed at runtime (only at build)<br>- Lightweight deployment in Quix | - Extra build step needed <br> (altough made easy with `quix_compiler.m`)                                                              |
-| **MATLAB Engine** | - Directly runs `.m` files without extra build step<br>- Closer to MATLAB environment (no translation)<br>- Easier when iterating and testing | - Requires MATLAB license server in runtime<br>- Heavier runtime footprint<br>- Harder to deploy in lightweight/cloud-native scenarios |
-
----
 
 ## Contribution
 
