@@ -23,10 +23,27 @@ deployments:
       - name: ms_to_sleep
         inputType: FreeText
         value: 500
-
+  - name: FMU Integration
+    application: fmu-integration
+    version: latest
+    deploymentType: Service
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: Name of the input topic to listen to.
+        value: 2d-vector
+      - name: output
+        inputType: OutputTopic
+        description: Name of the output topic to write to.
+        value: fmu-output
 
 # This section describes the Topics of the data pipeline
 topics:
   - name: 2d-vector
   - name: matlab-output
   - name: matlab-docker-2025a
+  - name: fmu-output
