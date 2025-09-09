@@ -1,28 +1,36 @@
-# Matlab Wheel
+# FMU Integration
 
-This code sample demonstrates how to run MATLAB functions in Quix as Python-compatible .whl packages.
+This sample shows how to execute an FMU using `fmpy` inside a Quix Streams application. It consumes messages from an input topic, runs the FMU for each message, and publishes enriched results to an output topic.
 
-## How to build the wheel
+## What `main.py` does
 
-### 01 - Your MATLAB function
-- Ensure you understand the types and number of inputs and outputs of your function. 
-- Save your .m function file in the compilation-files folder (like the rot.m example).
+At a glance, `main.py`:
 
-### 02 - Compile for Quix
-Let's compile the MATLAB function using the Quix compiler:  
-- Open MATLAB from the **compilation-files** folder.  
-- Run the `quix_compiler.m` script, replacing the arguments:  
-  ```matlab
-  quix_compiler('function_name', 'py')
-This will generate a folder named py containing the Python-compatible code, as well as the .whl package that we’ll deploy to Quix.
+- Prints basic metadata about the FMU (FMI version and model variables) so you can verify inputs/outputs at startup.
+- Defines `FMU_processing(row)` which:
+  - Reads fields `x`, `y` from the incoming message and uses a fixed angle `theta` (π/4) as an example parameter.
+  - Builds a structured NumPy array with columns `time`, `x`, `y`, `theta` and calls `fmpy.simulate_fmu` for a single point in time (`start_time=0.0`, `stop_time=0.0`).
+  - Parses the simulation result and writes `x_new` and `y_new` back into the message (mapped from FMU outputs `Out1` and `Out2`).
+- Sets up a Quix Streams `Application`, reads from the `input` topic into a StreamingDataFrame, applies `FMU_processing` to each row, prints the table, and writes the result to the `output` topic.
 
-<### 03 - Update the .whl in the quix app
-Replace the existing .whl file in your Quix app with the new one you just built.
-⚠️ If the new filename differs from the previous one, make sure to update the requirements.txt file accordingly.
+> Important: The `simulate_fmu` call as provided is a minimal example. For time‑based simulations you will typically use a non‑zero `stop_time` and possibly a time series in the `input` array.
 
-### 04 - Update main.py
-Edit the `matlab_processing` function in `main.py` to accommodate your specific function's input and output variables.
->
+## Prerequisites
+
+- A valid `.fmu` file accessible to the app. The repo includes `simulink_example_inports.fmu` in this folder as an example.
+- Python dependencies from `requirements.txt` installed.
+- Access to a Quix environment (or compatible Kafka broker) for streaming.
+
+## Configure the FMU file
+
+Edit the filename near the top of `main.py` if you are using a different model or path:
+
+```python
+fmu_filename = "simulink_example_inports.fmu"
+```
+
+When the app starts, it prints the FMU model variables with their `valueReference` and `causality` so you know which variables are inputs and outputs.
+
 ## Environment variables
 
 The code sample uses the following environment variables:
