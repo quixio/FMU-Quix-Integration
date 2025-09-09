@@ -1,4 +1,4 @@
-name: Matlab Wheel
+name: FMU Integration
 language: python
 variables:
   - name: input
@@ -10,7 +10,8 @@ variables:
     inputType: OutputTopic
     multiline: false
     description: Name of the output topic to write to.
-    defaultValue: matlab-output
+    defaultValue: fmu-output
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
+libraryItemId: starter-transformation

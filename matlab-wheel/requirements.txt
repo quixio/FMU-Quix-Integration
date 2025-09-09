@@ -1,6 +1,0 @@
-quixstreams==3.17
-numpy
-python-dotenv
-setuptools 
-wheel
-./quixmatlab_r2024b-24.2-py3-none-any.whl
