@@ -1,0 +1,11 @@
+name: FMU Explorer
+language: python
+variables:
+  - name: port
+    inputType: FreeText
+    description: Port to run the web server on
+    defaultValue: "80"
+dockerfile: dockerfile
+runEntryPoint: app.py
+defaultFile: app.py
+libraryItemId: starter-destination

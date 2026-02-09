@@ -1,0 +1,9 @@
+services:
+  fmu-explorer:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      - port=80
