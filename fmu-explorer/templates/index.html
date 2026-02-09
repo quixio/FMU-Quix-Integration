@@ -382,6 +382,71 @@
             color: #8BC34A;
             margin-bottom: 1rem;
         }
+
+        .examples-section {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            text-align: center;
+        }
+
+        .examples-section h3 {
+            color: #888;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .example-cards {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .example-card {
+            background: #16213e;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .example-card:hover {
+            border-color: #00d9ff;
+            background: #1a2a4e;
+        }
+
+        .example-card h4 {
+            color: #00d9ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-card p {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .divider {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            text-align: center;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            display: inline-block;
+            width: 80px;
+            height: 1px;
+            background: #333;
+            vertical-align: middle;
+            margin: 0 1rem;
+        }
     </style>
 </head>
 <body>
@@ -392,6 +457,15 @@
         <span class="step" id="step2">2. Upload Data</span>
         <span class="step" id="step3">3. Run Simulation</span>
     </div>
+
+    <div class="examples-section" id="examples-section">
+        <h3>Try an Example</h3>
+        <div class="example-cards" id="example-cards">
+            <!-- Populated by JavaScript -->
+        </div>
+    </div>
+
+    <div class="divider">or upload your own</div>
 
     <div class="drop-zone" id="drop-zone-fmu">
         <p>Drag & drop an FMU file here</p>
@@ -479,6 +553,72 @@
         const step1 = document.getElementById('step1');
         const step2 = document.getElementById('step2');
         const step3 = document.getElementById('step3');
+        const exampleCards = document.getElementById('example-cards');
+
+        // Load example FMUs on page load
+        async function loadExamples() {
+            try {
+                const response = await fetch('/examples');
+                const data = await response.json();
+
+                if (data.success && data.examples.length > 0) {
+                    exampleCards.innerHTML = data.examples.map(ex => `
+                        <div class="example-card" data-id="${ex.id}">
+                            <h4>${ex.name}</h4>
+                            <p>${ex.description}</p>
+                        </div>
+                    `).join('');
+
+                    // Add click handlers
+                    document.querySelectorAll('.example-card').forEach(card => {
+                        card.addEventListener('click', () => loadExample(card.dataset.id));
+                    });
+                }
+            } catch (err) {
+                console.error('Failed to load examples:', err);
+            }
+        }
+
+        async function loadExample(exampleId) {
+            loading.classList.add('active');
+            loadingText.textContent = 'Loading example FMU...';
+            results.classList.remove('active');
+            error.classList.remove('active');
+            csvSection.classList.remove('active');
+            inputDataSection.classList.remove('active');
+            outputDataSection.classList.remove('active');
+
+            try {
+                const response = await fetch(`/load-example/${exampleId}`, {
+                    method: 'POST'
+                });
+
+                const data = await response.json();
+                loading.classList.remove('active');
+
+                if (data.error) {
+                    showError(data.error);
+                    return;
+                }
+
+                displayFmuResults(data);
+
+                // Show CSV section
+                csvSection.classList.add('active');
+
+                // Update steps
+                step1.classList.remove('active');
+                step1.classList.add('completed');
+                step2.classList.add('active');
+
+            } catch (err) {
+                loading.classList.remove('active');
+                showError('Failed to load example: ' + err.message);
+            }
+        }
+
+        // Load examples on page load
+        loadExamples();
 
         // FMU Upload handlers
         dropZoneFmu.addEventListener('click', () => fileInputFmu.click());

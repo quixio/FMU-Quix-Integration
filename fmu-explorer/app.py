@@ -13,9 +13,119 @@ app.secret_key = secrets.token_hex(16)
 # Store uploaded FMUs temporarily (in production, use proper session storage)
 fmu_storage = {}
 
+# Example FMUs directory
+EXAMPLES_DIR = os.path.join(os.path.dirname(__file__), 'examples')
+
+# Available example FMUs
+EXAMPLE_FMUS = {
+    'bouncing_ball': {
+        'filename': 'BouncingBall.fmu',
+        'name': 'Bouncing Ball',
+        'description': 'A ball bouncing on the ground - demonstrates state events'
+    },
+    'simulink_2d': {
+        'filename': 'simulink_example_inports.fmu',
+        'name': '2D Vector Rotation',
+        'description': 'Rotates 2D coordinates (x, y) by angle theta'
+    }
+}
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/examples', methods=['GET'])
+def list_examples():
+    """List available example FMUs."""
+    examples = []
+    for key, info in EXAMPLE_FMUS.items():
+        fmu_path = os.path.join(EXAMPLES_DIR, info['filename'])
+        if os.path.exists(fmu_path):
+            examples.append({
+                'id': key,
+                'name': info['name'],
+                'description': info['description']
+            })
+    return jsonify({'success': True, 'examples': examples})
+
+@app.route('/load-example/<example_id>', methods=['POST'])
+def load_example(example_id):
+    """Load an example FMU."""
+    if example_id not in EXAMPLE_FMUS:
+        return jsonify({'error': f'Unknown example: {example_id}'}), 404
+
+    example_info = EXAMPLE_FMUS[example_id]
+    fmu_path = os.path.join(EXAMPLES_DIR, example_info['filename'])
+
+    if not os.path.exists(fmu_path):
+        return jsonify({'error': f'Example FMU not found: {example_info["filename"]}'}), 404
+
+    # Generate session ID if not exists
+    if 'session_id' not in session:
+        session['session_id'] = secrets.token_hex(8)
+
+    session_id = session['session_id']
+
+    try:
+        md = read_model_description(fmu_path)
+
+        # Categorize variables by causality
+        variables = {
+            'inputs': [],
+            'outputs': [],
+            'parameters': [],
+            'local': [],
+            'other': []
+        }
+
+        for v in md.modelVariables:
+            var_info = {
+                'name': v.name,
+                'valueReference': v.valueReference,
+                'description': v.description or '',
+                'type': v.type,
+                'start': getattr(v, 'start', None),
+                'causality': v.causality,
+                'variability': v.variability,
+            }
+
+            if v.causality == 'input':
+                variables['inputs'].append(var_info)
+            elif v.causality == 'output':
+                variables['outputs'].append(var_info)
+            elif v.causality == 'parameter':
+                variables['parameters'].append(var_info)
+            elif v.causality == 'local':
+                variables['local'].append(var_info)
+            else:
+                variables['other'].append(var_info)
+
+        # Store for later use (use the original path, don't copy)
+        fmu_storage[session_id] = {
+            'path': fmu_path,
+            'inputs': [v['name'] for v in variables['inputs']],
+            'outputs': [v['name'] for v in variables['outputs']],
+            'model_name': md.modelName,
+            'is_example': True
+        }
+
+        # Extract model info
+        model_info = {
+            'modelName': md.modelName,
+            'fmiVersion': md.fmiVersion,
+            'description': md.description or example_info['description'],
+            'generationTool': md.generationTool or '',
+        }
+
+        return jsonify({
+            'success': True,
+            'modelInfo': model_info,
+            'variables': variables,
+            'sessionId': session_id
+        })
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/analyze', methods=['POST'])
 def analyze_fmu():
