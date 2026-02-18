@@ -192,54 +192,68 @@ def discover_function(client) -> str | None:
     return None
 
 
+class MatlabDeploymentError(Exception):
+    """Raised when sim_bounce fails due to missing configureForDeployment."""
+    pass
+
+
+# Parameter sets to try — the model uses g_acc/init_vel/init_pos/k_rest
+# but the compiled function signature may differ.
+PARAM_SETS = [
+    {'g_acc': -9.81, 'init_vel': 15.0, 'init_pos': 10.0, 'k_rest': 0.8},
+    {'g': -9.81, 'v0': 15.0, 'x0': 10.0, 'k': 0.8},
+]
+
+
 def call_sim_function(client, func_name: str, stop_time: float,
                       discovered_nargout: list) -> None:
     """
     Call the MATLAB simulation function.
-    On first call, probes nargout. Caches the working value in discovered_nargout.
+    On first call, probes nargout and param names. Caches the working
+    values in discovered_nargout (format: [nargout, param_index, 'kw'|'pos']).
     """
     func = getattr(client, func_name)
 
-    # Default bouncing ball params
-    params = {
-        'g': -9.81,
-        'v0': 15.0,
-        'x0': 10.0,
-        'k': 0.8,
-    }
-
+    # Fast path: already discovered working call convention
     if discovered_nargout:
-        nargout = discovered_nargout[0]
-        func(**params, nargout=nargout)
+        nargout, param_idx, mode = discovered_nargout
+        params = PARAM_SETS[param_idx]
+        if mode == 'kw':
+            func(**params, nargout=nargout)
+        else:
+            func(*params.values(), nargout=nargout)
         return
 
-    # Probe nargout on first call
-    for nargout in [3, 2, 1, 4, 5]:
-        try:
-            result = func(**params, nargout=nargout)
-            discovered_nargout.append(nargout)
-            print(f"  sim_bounce works with nargout={nargout}")
-            return
-        except TypeError as e:
-            err = str(e).lower()
-            if 'nargout' in err or 'argument' in err:
-                continue
-            if 'missing' in err or 'required' in err:
-                break
-            raise
+    # Probe: try each param set × nargout × kw/positional
+    for param_idx, params in enumerate(PARAM_SETS):
+        for nargout in [3, 2, 1, 0, 4, 5]:
+            for mode in ['kw', 'pos']:
+                try:
+                    if mode == 'kw':
+                        func(**params, nargout=nargout)
+                    else:
+                        func(*params.values(), nargout=nargout)
+                    discovered_nargout.extend([nargout, param_idx, mode])
+                    print(f"  {func_name} works: {mode} args, "
+                          f"params={list(params.keys())}, nargout={nargout}")
+                    return
+                except TypeError:
+                    continue
+                except Exception as e:
+                    err_msg = str(e).lower()
+                    if 'configurefordeployment' in err_msg or \
+                       'simulation mode' in err_msg:
+                        raise MatlabDeploymentError(
+                            f"sim_bounce.m was compiled WITHOUT calling "
+                            f"simulink.compiler.configureForDeployment().\n"
+                            f"The wheel must be recompiled with the fix. "
+                            f"See the console output for details.\n"
+                            f"Original error: {e}"
+                        )
+                    # Other MATLAB errors — keep probing
+                    continue
 
-    # Fallback: positional args
-    param_values = list(params.values())
-    for nargout in [3, 2, 1, 4, 5]:
-        try:
-            func(*param_values, nargout=nargout)
-            discovered_nargout.append(nargout)
-            print(f"  sim_bounce works with positional args, nargout={nargout}")
-            return
-        except TypeError:
-            continue
-
-    raise RuntimeError(f"Could not call {func_name} with any nargout value")
+    raise RuntimeError(f"Could not call {func_name} with any argument combination")
 
 
 def init_matlab_package():
@@ -350,14 +364,30 @@ class BenchmarkMatlabSource(Source):
             pkg, func_name = init_matlab_package()
             discovered_nargout = []  # will be filled on first call
 
-            for duration in durations:
-                stats = bench_matlab_bouncing_ball(
-                    pkg, func_name, duration, iterations, warmup, discovered_nargout)
-                print_stats(stats)
-                all_stats.append(stats)
-                self._publish(stats, "bouncing_ball", "matlab_wheel", run_label, info)
+            try:
+                for duration in durations:
+                    stats = bench_matlab_bouncing_ball(
+                        pkg, func_name, duration, iterations, warmup, discovered_nargout)
+                    print_stats(stats)
+                    all_stats.append(stats)
+                    self._publish(stats, "bouncing_ball", "matlab_wheel", run_label, info)
+            except MatlabDeploymentError as e:
+                print(f"\n{'!' * 60}")
+                print(f"  MATLAB SIMULATION FAILED — WHEEL NEEDS RECOMPILATION")
+                print(f"{'!' * 60}")
+                print(f"  {e}")
+                print()
+                print("  The compiled sim_bounce.m is missing the required call:")
+                print("    simIn = simulink.compiler.configureForDeployment(simIn);")
+                print()
+                print("  Fix: add that line in sim_bounce.m BEFORE calling sim(),")
+                print("  then recompile the wheel with MATLAB Compiler SDK.")
+                print(f"{'!' * 60}")
 
-            pkg.terminate()
+            try:
+                pkg.terminate()
+            except Exception:
+                pass
         else:
             print("\n  WARNING: MATLAB wheel not available, skipping MATLAB benchmarks.")
 
