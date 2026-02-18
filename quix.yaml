@@ -150,15 +150,19 @@ deployments:
       - name: output
         inputType: OutputTopic
         description: Topic to publish benchmark results to
+        required: true
         value: benchmark-results
       - name: iterations
         inputType: FreeText
+        description: Number of timed iterations per benchmark scenario
         value: 100
       - name: warmup
         inputType: FreeText
+        description: Warmup iterations before timing begins
         value: 5
       - name: run_label
         inputType: FreeText
+        description: Label to tag results (e.g. cpu-200, cpu-500, cpu-1000)
         value: cpu-2000
   - name: Benchmark CPU-4000
     application: benchmark
