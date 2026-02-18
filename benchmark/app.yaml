@@ -1,0 +1,28 @@
+name: FMU Benchmark
+language: python
+variables:
+  - name: output
+    inputType: OutputTopic
+    multiline: false
+    description: Topic to publish benchmark results to
+    defaultValue: benchmark-results
+    required: true
+  - name: iterations
+    inputType: FreeText
+    multiline: false
+    description: Number of timed iterations per benchmark scenario
+    defaultValue: "100"
+  - name: warmup
+    inputType: FreeText
+    multiline: false
+    description: Warmup iterations before timing begins
+    defaultValue: "5"
+  - name: run_label
+    inputType: FreeText
+    multiline: false
+    description: Label to tag results (e.g. cpu-200, cpu-500, cpu-1000)
+    defaultValue: default
+dockerfile: dockerfile
+runEntryPoint: main.py
+defaultFile: main.py
+libraryItemId: starter-source

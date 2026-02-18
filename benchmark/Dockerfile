@@ -1,21 +1,28 @@
 FROM python:3.12.5-slim-bookworm
 
+# Set environment variables for non-interactive setup and unbuffered output
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
-    PYTHONIOENCODING=UTF-8
+    PYTHONIOENCODING=UTF-8 \
+    PYTHONPATH="/app"
 
+# Build argument for setting the main app path
+ARG MAINAPPPATH=.
+
+# Set working directory inside the container
 WORKDIR /app
 
-# Install dependencies
-COPY benchmark/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy requirements to leverage Docker cache
+COPY "${MAINAPPPATH}/requirements.txt" "${MAINAPPPATH}/requirements.txt"
 
-# Copy benchmark script
-COPY benchmark/benchmark.py .
+# Install dependencies without caching
+RUN pip install --no-cache-dir -r "${MAINAPPPATH}/requirements.txt"
 
-# Copy all FMU files into a known location
-COPY fmu-integration/simulink_example_inports.fmu fmus/simulink_example_inports.fmu
-COPY fmu-explorer/examples/BouncingBall.fmu fmus/BouncingBall.fmu
+# Copy entire application into container
+COPY . .
 
-ENTRYPOINT ["python3", "benchmark.py"]
-CMD ["-n", "100", "-w", "5", "-o", "/results/results.json"]
+# Set working directory to main app path
+WORKDIR "/app/${MAINAPPPATH}"
+
+# Define the container's startup command
+ENTRYPOINT ["python3", "main.py"]
