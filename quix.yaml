@@ -1,9 +1,7 @@
 # Quix Project Descriptor
 # This file describes the data pipeline and configuration of resources of a Quix Project.
-
 metadata:
   version: 1.0
-
 # This section describes the Deployments of the data pipeline
 deployments:
   - name: data-source
@@ -40,7 +38,6 @@ deployments:
         inputType: OutputTopic
         description: Name of the output topic to write to.
         value: fmu-output
-
   - name: FMU Explorer
     application: fmu-explorer
     version: latest
@@ -61,7 +58,6 @@ deployments:
         inputType: FreeText
         description: Port to run the web server on
         value: "80"
-
   - name: Benchmark CPU-200
     application: benchmark
     version: latest
@@ -84,7 +80,6 @@ deployments:
       - name: run_label
         inputType: FreeText
         value: cpu-200
-
   - name: Benchmark CPU-500
     application: benchmark
     version: latest
@@ -107,7 +102,6 @@ deployments:
       - name: run_label
         inputType: FreeText
         value: cpu-500
-
   - name: Benchmark CPU-1000
     application: benchmark
     version: latest
@@ -130,7 +124,6 @@ deployments:
       - name: run_label
         inputType: FreeText
         value: cpu-1000
-
 # This section describes the Topics of the data pipeline
 topics:
   - name: 2d-vector
