@@ -187,6 +187,20 @@ deployments:
         inputType: FreeText
         value: cpu-4000
 
+  - name: Benchmark Compare
+    application: benchmark-compare
+    version: latest
+    deploymentType: Service
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: Topic with benchmark results to compare
+        value: benchmark-results
+
 # This section describes the Topics of the data pipeline
 topics:
   - name: 2d-vector

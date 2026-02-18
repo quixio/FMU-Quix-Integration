@@ -1,0 +1,13 @@
+name: Benchmark Compare
+language: python
+variables:
+  - name: input
+    inputType: InputTopic
+    multiline: false
+    description: Topic with benchmark results to compare
+    defaultValue: benchmark-results
+    required: true
+dockerfile: dockerfile
+runEntryPoint: main.py
+defaultFile: main.py
+libraryItemId: starter-transformation
