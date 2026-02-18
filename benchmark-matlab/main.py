@@ -24,7 +24,7 @@ import numpy as np
 
 
 # ---------------------------------------------------------------------------
-# Stats (same as benchmark service)
+# Stats
 # ---------------------------------------------------------------------------
 
 @dataclass
@@ -145,8 +145,105 @@ def bench_fmu_bouncing_ball(fmu_path: str, stop_time: float,
 # MATLAB Wheel Benchmarks (sim_bounce via quixmatlab)
 # ---------------------------------------------------------------------------
 
+def convert_matlab_to_numpy(matlab_val) -> np.ndarray:
+    """Convert matlab.double (or similar) to numpy array."""
+    try:
+        return np.asarray(matlab_val).flatten()
+    except Exception:
+        try:
+            return np.array(list(matlab_val)).flatten()
+        except Exception:
+            return np.array([float(matlab_val)])
+
+
+def probe_function_exists(client, func_name: str) -> bool:
+    """Test if a function exists on the MATLAB client."""
+    try:
+        func = getattr(client, func_name)
+        func(nargout=0)
+        return True
+    except SystemError as e:
+        if 'not found' in str(e).lower():
+            return False
+        return True
+    except TypeError:
+        return True
+    except Exception:
+        return True
+
+
+def discover_function(client) -> str | None:
+    """Find the simulation function exposed by the wheel."""
+    candidates = ['sim_bounce', 'simulink_wrapper', 'bouncing_ball', 'run_model']
+    for name in candidates:
+        if probe_function_exists(client, name):
+            print(f"  Discovered function: {name}")
+            return name
+
+    # Fallback: scan dir()
+    excluded = {'initialize', 'terminate', 'set_config', 'get_config',
+                'exit', 'quit', 'name', 'wait_for_figures_to_close'}
+    for name in dir(client):
+        if name.startswith('_') or name in excluded:
+            continue
+        if probe_function_exists(client, name):
+            print(f"  Discovered function via scan: {name}")
+            return name
+    return None
+
+
+def call_sim_function(client, func_name: str, stop_time: float,
+                      discovered_nargout: list) -> None:
+    """
+    Call the MATLAB simulation function.
+    On first call, probes nargout. Caches the working value in discovered_nargout.
+    """
+    func = getattr(client, func_name)
+
+    # Default bouncing ball params
+    params = {
+        'g': -9.81,
+        'v0': 15.0,
+        'x0': 10.0,
+        'k': 0.8,
+    }
+
+    if discovered_nargout:
+        nargout = discovered_nargout[0]
+        func(**params, nargout=nargout)
+        return
+
+    # Probe nargout on first call
+    for nargout in [3, 2, 1, 4, 5]:
+        try:
+            result = func(**params, nargout=nargout)
+            discovered_nargout.append(nargout)
+            print(f"  sim_bounce works with nargout={nargout}")
+            return
+        except TypeError as e:
+            err = str(e).lower()
+            if 'nargout' in err or 'argument' in err:
+                continue
+            if 'missing' in err or 'required' in err:
+                break
+            raise
+
+    # Fallback: positional args
+    param_values = list(params.values())
+    for nargout in [3, 2, 1, 4, 5]:
+        try:
+            func(*param_values, nargout=nargout)
+            discovered_nargout.append(nargout)
+            print(f"  sim_bounce works with positional args, nargout={nargout}")
+            return
+        except TypeError:
+            continue
+
+    raise RuntimeError(f"Could not call {func_name} with any nargout value")
+
+
 def init_matlab_package():
-    """Initialize the quixmatlab package. Returns the package handle or None."""
+    """Initialize the quixmatlab package. Returns (client, func_name) or (None, None)."""
     try:
         import quixmatlab
         print("  Initializing MATLAB Runtime (this may take a moment)...")
@@ -154,21 +251,32 @@ def init_matlab_package():
         pkg = quixmatlab.initialize()
         elapsed = time.perf_counter() - t0
         print(f"  MATLAB Runtime initialized in {elapsed:.1f}s")
-        return pkg
+        print(f"  Exported: {[n for n in dir(pkg) if not n.startswith('_')]}")
+
+        func_name = discover_function(pkg)
+        if not func_name:
+            print("  WARNING: No simulation function found in quixmatlab.")
+            pkg.terminate()
+            return None, None
+
+        return pkg, func_name
     except Exception as e:
         print(f"  WARNING: Could not initialize quixmatlab: {e}")
-        return None
+        import traceback
+        traceback.print_exc()
+        return None, None
 
 
-def bench_matlab_bouncing_ball(pkg, stop_time: float,
-                               iterations: int, warmup: int) -> TimingStats:
-    """Benchmark sim_bounce from the MATLAB compiled wheel."""
+def bench_matlab_bouncing_ball(client, func_name: str, stop_time: float,
+                               iterations: int, warmup: int,
+                               discovered_nargout: list) -> TimingStats:
+    """Benchmark the MATLAB compiled bouncing ball simulation."""
     for _ in range(warmup):
-        pkg.sim_bounce(float(stop_time), nargout=1)
+        call_sim_function(client, func_name, stop_time, discovered_nargout)
     timings = []
     for _ in range(iterations):
         t0 = time.perf_counter()
-        pkg.sim_bounce(float(stop_time), nargout=1)
+        call_sim_function(client, func_name, stop_time, discovered_nargout)
         timings.append(time.perf_counter() - t0)
     return compute_stats(f"MATLAB BouncingBall (stop={stop_time}s)", timings)
 
@@ -229,7 +337,7 @@ class BenchmarkMatlabSource(Source):
             print("\n  WARNING: BouncingBall.fmu not found, skipping FMU benchmarks.")
 
         # ── MATLAB Wheel benchmarks ──
-        pkg = init_matlab_package()
+        pkg, func_name = init_matlab_package()
         if pkg:
             # Init/terminate cost (fewer iterations — it's slow)
             init_iters = min(iterations, 10)
@@ -239,10 +347,12 @@ class BenchmarkMatlabSource(Source):
             self._publish(stats, "bouncing_ball", "matlab_wheel", run_label, info)
 
             # Re-initialize for the simulation benchmarks
-            pkg = init_matlab_package()
+            pkg, func_name = init_matlab_package()
+            discovered_nargout = []  # will be filled on first call
 
             for duration in durations:
-                stats = bench_matlab_bouncing_ball(pkg, duration, iterations, warmup)
+                stats = bench_matlab_bouncing_ball(
+                    pkg, func_name, duration, iterations, warmup, discovered_nargout)
                 print_stats(stats)
                 all_stats.append(stats)
                 self._publish(stats, "bouncing_ball", "matlab_wheel", run_label, info)

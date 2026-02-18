@@ -1,0 +1,8 @@
+quixstreams==3.17
+numpy
+python-dotenv
+setuptools
+wheel
+requests
+# The quixmatlab wheel should be placed in this directory and uncommented:
+# ./quixmatlab_r2024b-24.2-py3-none-any.whl

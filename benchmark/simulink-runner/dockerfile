@@ -1,3 +1,6 @@
+# Simulink Runner - Processes simulation requests from Kafka
+# Based on MATLAB Runtime container with Python support
+
 FROM containers.mathworks.com/matlab-runtime:r2025b
 
 USER root
@@ -6,14 +9,15 @@ USER root
 ENV LD_LIBRARY_PATH=/opt/matlabruntime/R2025b/runtime/glnxa64/:$LD_LIBRARY_PATH
 ENV AGREE_TO_MATLAB_RUNTIME_LICENSE=yes
 
-# Install Python 3.12 with venv
-RUN apt-get update && \
-    apt-get install -y python3.12 python3.12-venv python3-pip && \
+# Install python3.12, venv, and pip
+RUN apt-get update && apt-get install -y python3.12 python3.12-venv python3-pip && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Create virtual environment
 ENV VENV_PATH=/opt/venv
 RUN python3.12 -m venv $VENV_PATH
+
+# Add venv to PATH
 ENV PATH="$VENV_PATH/bin:$PATH"
 
 # Set environment variables
@@ -22,18 +26,17 @@ ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONIOENCODING=UTF-8 \
     PYTHONPATH="/app"
 
+# Set working directory
 WORKDIR /app
 
-# Copy requirements and wheel first for caching
+# Copy requirements first for better caching
 COPY requirements.txt .
-COPY quixmatlab_r2025b-25.2-py3-none-any.whl .
 
-# Install Python dependencies + MATLAB wheel
-RUN pip install --no-cache-dir \
-    -r requirements.txt \
-    ./quixmatlab_r2025b-25.2-py3-none-any.whl
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application
 COPY . .
 
+# Launch app with virtualenv Python
 ENTRYPOINT ["python", "/app/main.py"]
