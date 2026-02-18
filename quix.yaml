@@ -1,7 +1,9 @@
 # Quix Project Descriptor
 # This file describes the data pipeline and configuration of resources of a Quix Project.
+
 metadata:
   version: 1.0
+
 # This section describes the Deployments of the data pipeline
 deployments:
   - name: data-source
@@ -57,7 +59,7 @@ deployments:
       - name: port
         inputType: FreeText
         description: Port to run the web server on
-        value: "80"
+        value: 80
   - name: Benchmark CPU-200
     application: benchmark
     version: latest
@@ -70,15 +72,19 @@ deployments:
       - name: output
         inputType: OutputTopic
         description: Topic to publish benchmark results to
+        required: true
         value: benchmark-results
       - name: iterations
         inputType: FreeText
-        value: "100"
+        description: Number of timed iterations per benchmark scenario
+        value: 100
       - name: warmup
         inputType: FreeText
-        value: "5"
+        description: Warmup iterations before timing begins
+        value: 5
       - name: run_label
         inputType: FreeText
+        description: Label to tag results (e.g. cpu-200, cpu-500, cpu-1000)
         value: cpu-200
   - name: Benchmark CPU-500
     application: benchmark
@@ -95,10 +101,10 @@ deployments:
         value: benchmark-results
       - name: iterations
         inputType: FreeText
-        value: "100"
+        value: 100
       - name: warmup
         inputType: FreeText
-        value: "5"
+        value: 5
       - name: run_label
         inputType: FreeText
         value: cpu-500
@@ -117,10 +123,10 @@ deployments:
         value: benchmark-results
       - name: iterations
         inputType: FreeText
-        value: "100"
+        value: 100
       - name: warmup
         inputType: FreeText
-        value: "5"
+        value: 5
       - name: run_label
         inputType: FreeText
         value: cpu-1000
@@ -139,10 +145,10 @@ deployments:
         value: benchmark-results
       - name: iterations
         inputType: FreeText
-        value: "100"
+        value: 100
       - name: warmup
         inputType: FreeText
-        value: "5"
+        value: 5
       - name: run_label
         inputType: FreeText
         value: cpu-2000
@@ -161,13 +167,14 @@ deployments:
         value: benchmark-results
       - name: iterations
         inputType: FreeText
-        value: "100"
+        value: 100
       - name: warmup
         inputType: FreeText
-        value: "5"
+        value: 5
       - name: run_label
         inputType: FreeText
         value: cpu-4000
+
 # This section describes the Topics of the data pipeline
 topics:
   - name: 2d-vector
