@@ -168,28 +168,6 @@ deployments:
       - name: run_label
         inputType: FreeText
         value: cpu-4000
-  - name: Benchmark CPU-10000
-    application: benchmark
-    version: latest
-    deploymentType: Job
-    resources:
-      cpu: 10000
-      memory: 500
-      replicas: 1
-    variables:
-      - name: output
-        inputType: OutputTopic
-        description: Topic to publish benchmark results to
-        value: benchmark-results
-      - name: iterations
-        inputType: FreeText
-        value: "100"
-      - name: warmup
-        inputType: FreeText
-        value: "5"
-      - name: run_label
-        inputType: FreeText
-        value: cpu-10000
 # This section describes the Topics of the data pipeline
 topics:
   - name: 2d-vector
