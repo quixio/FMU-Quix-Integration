@@ -1,0 +1,40 @@
+services:
+  benchmark-1cpu:
+    build:
+      context: ..
+      dockerfile: benchmark/Dockerfile
+    cpus: "1.0"
+    mem_limit: 512m
+    volumes:
+      - ./results:/results
+    command: ["-n", "100", "-w", "5", "-o", "/results/results_1cpu.json"]
+
+  benchmark-2cpu:
+    build:
+      context: ..
+      dockerfile: benchmark/Dockerfile
+    cpus: "2.0"
+    mem_limit: 512m
+    volumes:
+      - ./results:/results
+    command: ["-n", "100", "-w", "5", "-o", "/results/results_2cpu.json"]
+
+  benchmark-4cpu:
+    build:
+      context: ..
+      dockerfile: benchmark/Dockerfile
+    cpus: "4.0"
+    mem_limit: 512m
+    volumes:
+      - ./results:/results
+    command: ["-n", "100", "-w", "5", "-o", "/results/results_4cpu.json"]
+
+  benchmark-half-cpu:
+    build:
+      context: ..
+      dockerfile: benchmark/Dockerfile
+    cpus: "0.5"
+    mem_limit: 512m
+    volumes:
+      - ./results:/results
+    command: ["-n", "100", "-w", "5", "-o", "/results/results_0.5cpu.json"]
