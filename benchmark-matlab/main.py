@@ -1,15 +1,19 @@
 """
-FMU Simulation Benchmark — Quix Service
-========================================
-Runs FMU simulation benchmarks and publishes results to a Kafka topic.
-Configurable via environment variables: iterations, warmup, run_label.
+FMU vs MATLAB Wheel Benchmark — Quix Service
+==============================================
+Compares BouncingBall simulation performance between:
+  - FMU (via fmpy)
+  - MATLAB Compiled wheel (via quixmatlab / MATLAB Runtime)
+
+Publishes results to a Kafka topic with a `sim_type` field
+("fmu" or "matlab_wheel") so the comparison service can
+distinguish them.
 """
 
 from quixstreams import Application
 from quixstreams.sources import Source
-from fmpy import read_model_description, simulate_fmu
+from fmpy import simulate_fmu
 
-import json
 import os
 import platform
 import statistics
@@ -20,7 +24,7 @@ import numpy as np
 
 
 # ---------------------------------------------------------------------------
-# Stats
+# Stats (same as benchmark service)
 # ---------------------------------------------------------------------------
 
 @dataclass
@@ -74,7 +78,7 @@ def print_stats(stats: TimingStats):
 
 
 # ---------------------------------------------------------------------------
-# System info (detects Docker CPU limits)
+# System info
 # ---------------------------------------------------------------------------
 
 def system_info() -> dict:
@@ -95,7 +99,6 @@ def system_info() -> dict:
                 effective_cpus = quota / period
         except FileNotFoundError:
             pass
-
     return {
         "platform": platform.platform(),
         "processor": platform.processor(),
@@ -114,7 +117,6 @@ def find_fmu(name: str) -> str | None:
     candidates = [
         os.path.join(script_dir, name),
         os.path.join(script_dir, "fmus", name),
-        os.path.join(script_dir, "..", "fmu-integration", name),
         os.path.join(script_dir, "..", "fmu-explorer", "examples", name),
     ]
     for path in candidates:
@@ -124,100 +126,74 @@ def find_fmu(name: str) -> str | None:
 
 
 # ---------------------------------------------------------------------------
-# Benchmark scenarios
+# FMU Benchmarks (BouncingBall via fmpy)
 # ---------------------------------------------------------------------------
 
-def bench_model_load(fmu_path: str, iterations: int, warmup: int) -> TimingStats:
+def bench_fmu_bouncing_ball(fmu_path: str, stop_time: float,
+                            iterations: int, warmup: int) -> TimingStats:
     for _ in range(warmup):
-        read_model_description(fmu_path)
+        simulate_fmu(fmu_path, start_time=0.0, stop_time=stop_time)
     timings = []
     for _ in range(iterations):
         t0 = time.perf_counter()
-        read_model_description(fmu_path)
+        simulate_fmu(fmu_path, start_time=0.0, stop_time=stop_time)
         timings.append(time.perf_counter() - t0)
-    return compute_stats("Model description load", timings)
+    return compute_stats(f"FMU BouncingBall (stop={stop_time}s)", timings)
 
 
-def bench_simulink_instant(fmu_path: str, iterations: int, warmup: int) -> TimingStats:
-    theta = np.pi / 4
-    input_data = np.array(
-        [(0.0, 1.0, 2.0, theta)],
-        dtype=[('time', np.float64), ('x', np.float64),
-               ('y', np.float64), ('theta', np.float64)]
-    )
-    for _ in range(warmup):
-        simulate_fmu(fmu_path, start_time=0.0, stop_time=0.0, input=input_data)
-    timings = []
-    for _ in range(iterations):
+# ---------------------------------------------------------------------------
+# MATLAB Wheel Benchmarks (sim_bounce via quixmatlab)
+# ---------------------------------------------------------------------------
+
+def init_matlab_package():
+    """Initialize the quixmatlab package. Returns the package handle or None."""
+    try:
+        import quixmatlab
+        print("  Initializing MATLAB Runtime (this may take a moment)...")
         t0 = time.perf_counter()
-        simulate_fmu(fmu_path, start_time=0.0, stop_time=0.0, input=input_data)
-        timings.append(time.perf_counter() - t0)
-    return compute_stats("Simulink instant eval (start==stop)", timings)
+        pkg = quixmatlab.initialize()
+        elapsed = time.perf_counter() - t0
+        print(f"  MATLAB Runtime initialized in {elapsed:.1f}s")
+        return pkg
+    except Exception as e:
+        print(f"  WARNING: Could not initialize quixmatlab: {e}")
+        return None
 
 
-def bench_simulink_timeseries(fmu_path: str, num_points: int,
+def bench_matlab_bouncing_ball(pkg, stop_time: float,
                                iterations: int, warmup: int) -> TimingStats:
-    theta = np.pi / 4
-    times = np.linspace(0.0, 1.0, num_points)
-    data = [(t, np.sin(t), np.cos(t), theta) for t in times]
-    input_data = np.array(
-        data,
-        dtype=[('time', np.float64), ('x', np.float64),
-               ('y', np.float64), ('theta', np.float64)]
-    )
+    """Benchmark sim_bounce from the MATLAB compiled wheel."""
     for _ in range(warmup):
-        simulate_fmu(fmu_path, start_time=0.0, stop_time=1.0, input=input_data)
+        pkg.sim_bounce(float(stop_time), nargout=1)
     timings = []
     for _ in range(iterations):
         t0 = time.perf_counter()
-        simulate_fmu(fmu_path, start_time=0.0, stop_time=1.0, input=input_data)
+        pkg.sim_bounce(float(stop_time), nargout=1)
         timings.append(time.perf_counter() - t0)
-    return compute_stats(f"Simulink time-series ({num_points} points)", timings)
+    return compute_stats(f"MATLAB BouncingBall (stop={stop_time}s)", timings)
 
 
-def bench_bouncing_ball(fmu_path: str, stop_time: float,
-                        iterations: int, warmup: int) -> TimingStats:
+def bench_matlab_init(iterations: int, warmup: int) -> TimingStats:
+    """Benchmark the cost of initializing + terminating the MATLAB package."""
+    import quixmatlab
     for _ in range(warmup):
-        simulate_fmu(fmu_path, start_time=0.0, stop_time=stop_time)
+        p = quixmatlab.initialize()
+        p.terminate()
     timings = []
     for _ in range(iterations):
         t0 = time.perf_counter()
-        simulate_fmu(fmu_path, start_time=0.0, stop_time=stop_time)
+        p = quixmatlab.initialize()
+        p.terminate()
         timings.append(time.perf_counter() - t0)
-    return compute_stats(f"BouncingBall free-run (stop={stop_time}s)", timings)
-
-
-def bench_rapid_fire(fmu_path: str, iterations: int, warmup: int) -> TimingStats:
-    theta = np.pi / 4
-    rng = np.random.default_rng(42)
-    xs = rng.uniform(-10, 10, iterations + warmup)
-    ys = rng.uniform(-10, 10, iterations + warmup)
-    for i in range(warmup):
-        input_data = np.array(
-            [(0.0, xs[i], ys[i], theta)],
-            dtype=[('time', np.float64), ('x', np.float64),
-                   ('y', np.float64), ('theta', np.float64)]
-        )
-        simulate_fmu(fmu_path, start_time=0.0, stop_time=0.0, input=input_data)
-    timings = []
-    for i in range(iterations):
-        input_data = np.array(
-            [(0.0, xs[warmup + i], ys[warmup + i], theta)],
-            dtype=[('time', np.float64), ('x', np.float64),
-                   ('y', np.float64), ('theta', np.float64)]
-        )
-        t0 = time.perf_counter()
-        simulate_fmu(fmu_path, start_time=0.0, stop_time=0.0, input=input_data)
-        timings.append(time.perf_counter() - t0)
-    return compute_stats("Rapid-fire streaming simulation", timings)
+    return compute_stats("MATLAB package init+terminate", timings)
 
 
 # ---------------------------------------------------------------------------
 # Quix Source
 # ---------------------------------------------------------------------------
 
-class BenchmarkSource(Source):
-    """Runs all FMU benchmarks and publishes each result as a message."""
+class BenchmarkMatlabSource(Source):
+    """Runs FMU vs MATLAB wheel benchmarks and publishes results."""
 
     def run(self):
         iterations = int(os.environ.get("iterations", "100"))
@@ -226,7 +202,7 @@ class BenchmarkSource(Source):
 
         info = system_info()
         print("=" * 60)
-        print("  FMU Simulation Benchmark (Quix Service)")
+        print("  FMU vs MATLAB Wheel Benchmark (Quix Service)")
         print("=" * 60)
         print(f"  Run label      : {run_label}")
         print(f"  Platform       : {info['platform']}")
@@ -237,56 +213,45 @@ class BenchmarkSource(Source):
         print(f"  Iterations     : {iterations}")
         print(f"  Warmup         : {warmup}")
 
-        simulink_fmu = find_fmu("simulink_example_inports.fmu")
-        bouncing_fmu = find_fmu("BouncingBall.fmu")
-
-        if not simulink_fmu and not bouncing_fmu:
-            print("ERROR: No FMU files found.")
-            return
-
         all_stats: list[TimingStats] = []
+        durations = [1.0, 5.0, 10.0, 20.0]
 
-        # -- Simulink benchmarks --
-        if simulink_fmu:
-            print(f"\n  Simulink FMU: {simulink_fmu}")
-
-            stats = bench_model_load(simulink_fmu, iterations, warmup)
-            print_stats(stats)
-            all_stats.append(stats)
-            self._publish(stats, "simulink", run_label, info)
-
-            stats = bench_simulink_instant(simulink_fmu, iterations, warmup)
-            print_stats(stats)
-            all_stats.append(stats)
-            self._publish(stats, "simulink", run_label, info)
-
-            for pts in [10, 100, 1000]:
-                stats = bench_simulink_timeseries(simulink_fmu, pts, iterations, warmup)
-                print_stats(stats)
-                all_stats.append(stats)
-                self._publish(stats, "simulink", run_label, info)
-
-            stats = bench_rapid_fire(simulink_fmu, iterations, warmup)
-            print_stats(stats)
-            all_stats.append(stats)
-            self._publish(stats, "simulink", run_label, info)
-
-        # -- BouncingBall benchmarks --
+        # ── FMU BouncingBall benchmarks ──
+        bouncing_fmu = find_fmu("BouncingBall.fmu")
         if bouncing_fmu:
             print(f"\n  BouncingBall FMU: {bouncing_fmu}")
-
-            stats = bench_model_load(bouncing_fmu, iterations, warmup)
-            print_stats(stats)
-            all_stats.append(stats)
-            self._publish(stats, "bouncing_ball", run_label, info)
-
-            for duration in [1.0, 5.0, 10.0, 20.0]:
-                stats = bench_bouncing_ball(bouncing_fmu, duration, iterations, warmup)
+            for duration in durations:
+                stats = bench_fmu_bouncing_ball(bouncing_fmu, duration, iterations, warmup)
                 print_stats(stats)
                 all_stats.append(stats)
-                self._publish(stats, "bouncing_ball", run_label, info)
+                self._publish(stats, "bouncing_ball", "fmu", run_label, info)
+        else:
+            print("\n  WARNING: BouncingBall.fmu not found, skipping FMU benchmarks.")
 
-        # -- Summary --
+        # ── MATLAB Wheel benchmarks ──
+        pkg = init_matlab_package()
+        if pkg:
+            # Init/terminate cost (fewer iterations — it's slow)
+            init_iters = min(iterations, 10)
+            stats = bench_matlab_init(init_iters, min(warmup, 2))
+            print_stats(stats)
+            all_stats.append(stats)
+            self._publish(stats, "bouncing_ball", "matlab_wheel", run_label, info)
+
+            # Re-initialize for the simulation benchmarks
+            pkg = init_matlab_package()
+
+            for duration in durations:
+                stats = bench_matlab_bouncing_ball(pkg, duration, iterations, warmup)
+                print_stats(stats)
+                all_stats.append(stats)
+                self._publish(stats, "bouncing_ball", "matlab_wheel", run_label, info)
+
+            pkg.terminate()
+        else:
+            print("\n  WARNING: MATLAB wheel not available, skipping MATLAB benchmarks.")
+
+        # ── Summary ──
         print(f"\n{'=' * 60}")
         print("  Summary")
         print(f"{'=' * 60}")
@@ -297,19 +262,19 @@ class BenchmarkSource(Source):
         print()
 
     def _publish(self, stats: TimingStats, fmu_model: str,
-                 run_label: str, sys_info: dict):
-        """Serialize one benchmark result and produce it to the topic."""
+                 sim_type: str, run_label: str, sys_info: dict):
+        """Publish one benchmark result to the topic."""
         value = {
             "run_label": run_label,
             "fmu_model": fmu_model,
-            "sim_type": "fmu",
+            "sim_type": sim_type,
             "effective_cpus": sys_info["effective_cpus"],
             "os_cpu_count": sys_info["os_cpu_count"],
             "platform": sys_info["platform"],
             **asdict(stats),
         }
         msg = self.serialize(
-            key=f"benchmark-{run_label}",
+            key=f"benchmark-{run_label}-{sim_type}",
             value=value,
         )
         self.produce(key=msg.key, value=msg.value)
@@ -321,12 +286,12 @@ class BenchmarkSource(Source):
 
 def main():
     app = Application(
-        consumer_group="fmu-benchmark",
+        consumer_group="fmu-matlab-benchmark",
         auto_create_topics=True,
     )
     output_topic = app.topic(name=os.environ["output"])
-    benchmark_source = BenchmarkSource(name="fmu-benchmark")
-    app.add_source(source=benchmark_source, topic=output_topic)
+    source = BenchmarkMatlabSource(name="fmu-matlab-benchmark")
+    app.add_source(source=source, topic=output_topic)
     app.run()
 
 

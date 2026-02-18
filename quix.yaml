@@ -60,58 +60,6 @@ deployments:
         inputType: FreeText
         description: Port to run the web server on
         value: 80
-  - name: Benchmark CPU-200
-    application: benchmark
-    version: latest
-    deploymentType: Job
-    resources:
-      cpu: 200
-      memory: 500
-      replicas: 1
-    variables:
-      - name: output
-        inputType: OutputTopic
-        description: Topic to publish benchmark results to
-        required: true
-        value: benchmark-results
-      - name: iterations
-        inputType: FreeText
-        description: Number of timed iterations per benchmark scenario
-        value: 100
-      - name: warmup
-        inputType: FreeText
-        description: Warmup iterations before timing begins
-        value: 5
-      - name: run_label
-        inputType: FreeText
-        description: Label to tag results (e.g. cpu-200, cpu-500, cpu-1000)
-        value: cpu-200
-  - name: Benchmark CPU-500
-    application: benchmark
-    version: latest
-    deploymentType: Job
-    resources:
-      cpu: 500
-      memory: 500
-      replicas: 1
-    variables:
-      - name: output
-        inputType: OutputTopic
-        description: Topic to publish benchmark results to
-        required: true
-        value: benchmark-results
-      - name: iterations
-        inputType: FreeText
-        description: Number of timed iterations per benchmark scenario
-        value: 100
-      - name: warmup
-        inputType: FreeText
-        description: Warmup iterations before timing begins
-        value: 5
-      - name: run_label
-        inputType: FreeText
-        description: Label to tag results (e.g. cpu-200, cpu-500, cpu-1000)
-        value: cpu-500
   - name: Benchmark CPU-1000
     application: benchmark
     version: latest
@@ -186,6 +134,76 @@ deployments:
       - name: run_label
         inputType: FreeText
         value: cpu-4000
+
+  - name: MATLAB Benchmark CPU-1000
+    application: benchmark-matlab
+    version: latest
+    deploymentType: Job
+    resources:
+      cpu: 1000
+      memory: 2000
+      replicas: 1
+    variables:
+      - name: output
+        inputType: OutputTopic
+        description: Topic to publish benchmark results to
+        required: true
+        value: benchmark-results
+      - name: iterations
+        inputType: FreeText
+        value: 100
+      - name: warmup
+        inputType: FreeText
+        value: 5
+      - name: run_label
+        inputType: FreeText
+        value: matlab-cpu-1000
+  - name: MATLAB Benchmark CPU-2000
+    application: benchmark-matlab
+    version: latest
+    deploymentType: Job
+    resources:
+      cpu: 2000
+      memory: 2000
+      replicas: 1
+    variables:
+      - name: output
+        inputType: OutputTopic
+        description: Topic to publish benchmark results to
+        required: true
+        value: benchmark-results
+      - name: iterations
+        inputType: FreeText
+        value: 100
+      - name: warmup
+        inputType: FreeText
+        value: 5
+      - name: run_label
+        inputType: FreeText
+        value: matlab-cpu-2000
+  - name: MATLAB Benchmark CPU-4000
+    application: benchmark-matlab
+    version: latest
+    deploymentType: Job
+    resources:
+      cpu: 4000
+      memory: 2000
+      replicas: 1
+    variables:
+      - name: output
+        inputType: OutputTopic
+        description: Topic to publish benchmark results to
+        required: true
+        value: benchmark-results
+      - name: iterations
+        inputType: FreeText
+        value: 100
+      - name: warmup
+        inputType: FreeText
+        value: 5
+      - name: run_label
+        inputType: FreeText
+        value: matlab-cpu-4000
 
   - name: Benchmark Compare
     application: benchmark-compare
