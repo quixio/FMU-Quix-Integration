@@ -61,7 +61,7 @@ deployments:
   - name: Benchmark CPU-200
     application: benchmark
     version: latest
-    deploymentType: Service
+    deploymentType: Job
     resources:
       cpu: 200
       memory: 500
@@ -83,7 +83,7 @@ deployments:
   - name: Benchmark CPU-500
     application: benchmark
     version: latest
-    deploymentType: Service
+    deploymentType: Job
     resources:
       cpu: 500
       memory: 500
@@ -105,7 +105,7 @@ deployments:
   - name: Benchmark CPU-1000
     application: benchmark
     version: latest
-    deploymentType: Service
+    deploymentType: Job
     resources:
       cpu: 1000
       memory: 500
@@ -124,6 +124,72 @@ deployments:
       - name: run_label
         inputType: FreeText
         value: cpu-1000
+  - name: Benchmark CPU-2000
+    application: benchmark
+    version: latest
+    deploymentType: Job
+    resources:
+      cpu: 2000
+      memory: 500
+      replicas: 1
+    variables:
+      - name: output
+        inputType: OutputTopic
+        description: Topic to publish benchmark results to
+        value: benchmark-results
+      - name: iterations
+        inputType: FreeText
+        value: "100"
+      - name: warmup
+        inputType: FreeText
+        value: "5"
+      - name: run_label
+        inputType: FreeText
+        value: cpu-2000
+  - name: Benchmark CPU-4000
+    application: benchmark
+    version: latest
+    deploymentType: Job
+    resources:
+      cpu: 4000
+      memory: 500
+      replicas: 1
+    variables:
+      - name: output
+        inputType: OutputTopic
+        description: Topic to publish benchmark results to
+        value: benchmark-results
+      - name: iterations
+        inputType: FreeText
+        value: "100"
+      - name: warmup
+        inputType: FreeText
+        value: "5"
+      - name: run_label
+        inputType: FreeText
+        value: cpu-4000
+  - name: Benchmark CPU-10000
+    application: benchmark
+    version: latest
+    deploymentType: Job
+    resources:
+      cpu: 10000
+      memory: 500
+      replicas: 1
+    variables:
+      - name: output
+        inputType: OutputTopic
+        description: Topic to publish benchmark results to
+        value: benchmark-results
+      - name: iterations
+        inputType: FreeText
+        value: "100"
+      - name: warmup
+        inputType: FreeText
+        value: "5"
+      - name: run_label
+        inputType: FreeText
+        value: cpu-10000
 # This section describes the Topics of the data pipeline
 topics:
   - name: 2d-vector
