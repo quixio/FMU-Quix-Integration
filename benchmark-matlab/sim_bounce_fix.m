@@ -63,24 +63,23 @@ function [tout, xout, vout] = sim_bounce(g_acc, init_vel, init_pos, k_rest)
 
     %---------------------------------------------------------------
     % 4. Extract results
+    %    In Rapid Accelerator mode, out.tout does NOT exist.
+    %    Time and data must be read from the signal Dataset.
     %---------------------------------------------------------------
-    tout = out.tout;
-
-    % Try Dataset-style output first, then fallback to struct
     if isprop(out, 'yout') && isa(out.yout, 'Simulink.SimulationData.Dataset')
         ds = out.yout;
+        tout = ds{1}.Values.Time;
+        xout = ds{1}.Values.Data;
         if ds.numElements >= 2
-            xout = ds{1}.Values.Data;
             vout = ds{2}.Values.Data;
         else
-            xout = ds{1}.Values.Data;
             vout = zeros(size(tout));
         end
-    elseif isprop(out, 'xout')
+    elseif isprop(out, 'tout')
+        tout = out.tout;
         xout = out.xout;
         vout = zeros(size(tout));
     else
-        xout = zeros(size(tout));
-        vout = zeros(size(tout));
+        error('sim_bounce: could not extract results from SimulationOutput');
     end
 end
