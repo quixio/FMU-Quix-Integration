@@ -1,0 +1,1311 @@
+[2026-02-19 08:07:46,450] [INFO] [quixstreams] : Quix SDK Token detected; the application will connect to Quix Cloud brokers
+Benchmark Comparison Service started.
+Waiting for results on topic: benchmark-results
+[2026-02-19 08:07:47,924] [INFO] [quixstreams] : Starting the Application with the config: broker_address="{'bootstrap.servers': 'broker-bootstrap.26415ad24a14.az-france-0.app.quix.io:30095', 'security.protocol': 'sasl_ssl', 'sasl.mechanism': 'SCRAM-SHA-512', 'sasl.username': 'quixers-fmuquixintegration-fmubench', 'sasl.password': SecretStr('**********')}" consumer_group="quixers-fmuquixintegration-fmubench-benchmark-compare" auto_offset_reset="earliest" commit_interval=5.0s commit_every=0 processing_guarantee="at-least-once"
+[2026-02-19 08:07:47,924] [INFO] [quixstreams] : Initializing state directory at "/app/state/quixers-fmuquixintegration-fmubench-benchmark-compare"
+[2026-02-19 08:07:48,019] [INFO] [quixstreams] : Waiting for incoming messages
+
+====================================================================
+  CPU / Sim-Type Comparison
+====================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     | matlab-cpu-4000
+  --------------------------------------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           8.212
+  --------------------------------------------- | ---------------
+  TOTAL (sum)                                   |           8.212
+  AVERAGE                                       |           8.212
+  BEST (min)                                    |           8.212
+  WORST (max)                                   |           8.212
+
+  Throughput (ops/s)
+  Benchmark                                     | matlab-cpu-4000
+  --------------------------------------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           121.8
+  --------------------------------------------- | ---------------
+  TOTAL (sum)                                   |           121.8
+  AVERAGE                                       |           121.8
+  BEST (min)                                    |           121.8
+  WORST (max)                                   |           121.8
+
+  P95 Latency (ms)
+  Benchmark                                     | matlab-cpu-4000
+  --------------------------------------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |          10.430
+  --------------------------------------------- | ---------------
+  TOTAL (sum)                                   |          10.430
+  AVERAGE                                       |          10.430
+  BEST (min)                                    |          10.430
+  WORST (max)                                   |          10.430
+
+  Total results collected: 1  (1 scenarios x 1 configs)
+
+
+====================================================================
+  CPU / Sim-Type Comparison
+====================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     | matlab-cpu-4000
+  --------------------------------------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           8.212
+  FMU BouncingBall (stop=5.0s)                  |           9.663
+  --------------------------------------------- | ---------------
+  TOTAL (sum)                                   |          17.875
+  AVERAGE                                       |           8.937
+  BEST (min)                                    |           8.212
+  WORST (max)                                   |           9.663
+
+  Throughput (ops/s)
+  Benchmark                                     | matlab-cpu-4000
+  --------------------------------------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           121.8
+  FMU BouncingBall (stop=5.0s)                  |           103.5
+  --------------------------------------------- | ---------------
+  TOTAL (sum)                                   |           225.3
+  AVERAGE                                       |           112.6
+  BEST (min)                                    |           103.5
+  WORST (max)                                   |           121.8
+
+  P95 Latency (ms)
+  Benchmark                                     | matlab-cpu-4000
+  --------------------------------------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |          10.430
+  FMU BouncingBall (stop=5.0s)                  |          12.480
+  --------------------------------------------- | ---------------
+  TOTAL (sum)                                   |          22.910
+  AVERAGE                                       |          11.455
+  BEST (min)                                    |          10.430
+  WORST (max)                                   |          12.480
+
+  Total results collected: 2  (2 scenarios x 1 configs)
+
+
+====================================================================
+  CPU / Sim-Type Comparison
+====================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     | matlab-cpu-4000
+  --------------------------------------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           8.212
+  FMU BouncingBall (stop=10.0s)                 |          13.703
+  FMU BouncingBall (stop=5.0s)                  |           9.663
+  --------------------------------------------- | ---------------
+  TOTAL (sum)                                   |          31.578
+  AVERAGE                                       |          10.526
+  BEST (min)                                    |           8.212
+  WORST (max)                                   |          13.703
+
+  Throughput (ops/s)
+  Benchmark                                     | matlab-cpu-4000
+  --------------------------------------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           121.8
+  FMU BouncingBall (stop=10.0s)                 |            73.0
+  FMU BouncingBall (stop=5.0s)                  |           103.5
+  --------------------------------------------- | ---------------
+  TOTAL (sum)                                   |           298.2
+  AVERAGE                                       |            99.4
+  BEST (min)                                    |            73.0
+  WORST (max)                                   |           121.8
+
+  P95 Latency (ms)
+  Benchmark                                     | matlab-cpu-4000
+  --------------------------------------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |          10.430
+  FMU BouncingBall (stop=10.0s)                 |          19.204
+  FMU BouncingBall (stop=5.0s)                  |          12.480
+  --------------------------------------------- | ---------------
+  TOTAL (sum)                                   |          42.114
+  AVERAGE                                       |          14.038
+  BEST (min)                                    |          10.430
+  WORST (max)                                   |          19.204
+
+  Total results collected: 3  (3 scenarios x 1 configs)
+
+
+====================================================================
+  CPU / Sim-Type Comparison
+====================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     | matlab-cpu-4000
+  --------------------------------------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           8.212
+  FMU BouncingBall (stop=10.0s)                 |          13.703
+  FMU BouncingBall (stop=20.0s)                 |          15.085
+  FMU BouncingBall (stop=5.0s)                  |           9.663
+  --------------------------------------------- | ---------------
+  TOTAL (sum)                                   |          46.663
+  AVERAGE                                       |          11.666
+  BEST (min)                                    |           8.212
+  WORST (max)                                   |          15.085
+
+  Throughput (ops/s)
+  Benchmark                                     | matlab-cpu-4000
+  --------------------------------------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           121.8
+  FMU BouncingBall (stop=10.0s)                 |            73.0
+  FMU BouncingBall (stop=20.0s)                 |            66.3
+  FMU BouncingBall (stop=5.0s)                  |           103.5
+  --------------------------------------------- | ---------------
+  TOTAL (sum)                                   |           364.5
+  AVERAGE                                       |            91.1
+  BEST (min)                                    |            66.3
+  WORST (max)                                   |           121.8
+
+  P95 Latency (ms)
+  Benchmark                                     | matlab-cpu-4000
+  --------------------------------------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |          10.430
+  FMU BouncingBall (stop=10.0s)                 |          19.204
+  FMU BouncingBall (stop=20.0s)                 |          20.038
+  FMU BouncingBall (stop=5.0s)                  |          12.480
+  --------------------------------------------- | ---------------
+  TOTAL (sum)                                   |          62.152
+  AVERAGE                                       |          15.538
+  BEST (min)                                    |          10.430
+  WORST (max)                                   |          20.038
+
+  Total results collected: 4  (4 scenarios x 1 configs)
+
+
+======================================================================================
+  CPU / Sim-Type Comparison
+======================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000
+  --------------------------------------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           8.212 |           6.985
+  FMU BouncingBall (stop=10.0s)                 |          13.703 |               —
+  FMU BouncingBall (stop=20.0s)                 |          15.085 |               —
+  FMU BouncingBall (stop=5.0s)                  |           9.663 |               —
+  --------------------------------------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          46.663 |           6.985
+  AVERAGE                                       |          11.666 |           6.985
+  BEST (min)                                    |           8.212 |           6.985
+  WORST (max)                                   |          15.085 |           6.985
+
+  Throughput (ops/s)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000
+  --------------------------------------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           121.8 |           143.2
+  FMU BouncingBall (stop=10.0s)                 |            73.0 |               —
+  FMU BouncingBall (stop=20.0s)                 |            66.3 |               —
+  FMU BouncingBall (stop=5.0s)                  |           103.5 |               —
+  --------------------------------------------- | --------------- | ---------------
+  TOTAL (sum)                                   |           364.5 |           143.2
+  AVERAGE                                       |            91.1 |           143.2
+  BEST (min)                                    |            66.3 |           143.2
+  WORST (max)                                   |           121.8 |           143.2
+
+  P95 Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000
+  --------------------------------------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |          10.430 |           9.691
+  FMU BouncingBall (stop=10.0s)                 |          19.204 |               —
+  FMU BouncingBall (stop=20.0s)                 |          20.038 |               —
+  FMU BouncingBall (stop=5.0s)                  |          12.480 |               —
+  --------------------------------------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          62.152 |           9.691
+  AVERAGE                                       |          15.538 |           9.691
+  BEST (min)                                    |          10.430 |           9.691
+  WORST (max)                                   |          20.038 |           9.691
+
+  Total results collected: 5  (4 scenarios x 2 configs)
+
+
+======================================================================================
+  CPU / Sim-Type Comparison
+======================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000
+  --------------------------------------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           8.212 |           6.985
+  FMU BouncingBall (stop=10.0s)                 |          13.703 |               —
+  FMU BouncingBall (stop=20.0s)                 |          15.085 |               —
+  FMU BouncingBall (stop=5.0s)                  |           9.663 |          10.060
+  --------------------------------------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          46.663 |          17.046
+  AVERAGE                                       |          11.666 |           8.523
+  BEST (min)                                    |           8.212 |           6.985
+  WORST (max)                                   |          15.085 |          10.060
+
+  Throughput (ops/s)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000
+  --------------------------------------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           121.8 |           143.2
+  FMU BouncingBall (stop=10.0s)                 |            73.0 |               —
+  FMU BouncingBall (stop=20.0s)                 |            66.3 |               —
+  FMU BouncingBall (stop=5.0s)                  |           103.5 |            99.4
+  --------------------------------------------- | --------------- | ---------------
+  TOTAL (sum)                                   |           364.5 |           242.6
+  AVERAGE                                       |            91.1 |           121.3
+  BEST (min)                                    |            66.3 |            99.4
+  WORST (max)                                   |           121.8 |           143.2
+
+  P95 Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000
+  --------------------------------------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |          10.430 |           9.691
+  FMU BouncingBall (stop=10.0s)                 |          19.204 |               —
+  FMU BouncingBall (stop=20.0s)                 |          20.038 |               —
+  FMU BouncingBall (stop=5.0s)                  |          12.480 |          13.376
+  --------------------------------------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          62.152 |          23.067
+  AVERAGE                                       |          15.538 |          11.534
+  BEST (min)                                    |          10.430 |           9.691
+  WORST (max)                                   |          20.038 |          13.376
+
+  Total results collected: 6  (4 scenarios x 2 configs)
+
+
+======================================================================================
+  CPU / Sim-Type Comparison
+======================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000
+  --------------------------------------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           8.212 |           6.985
+  FMU BouncingBall (stop=10.0s)                 |          13.703 |          13.101
+  FMU BouncingBall (stop=20.0s)                 |          15.085 |               —
+  FMU BouncingBall (stop=5.0s)                  |           9.663 |          10.060
+  --------------------------------------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          46.663 |          30.147
+  AVERAGE                                       |          11.666 |          10.049
+  BEST (min)                                    |           8.212 |           6.985
+  WORST (max)                                   |          15.085 |          13.101
+
+  Throughput (ops/s)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000
+  --------------------------------------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           121.8 |           143.2
+  FMU BouncingBall (stop=10.0s)                 |            73.0 |            76.3
+  FMU BouncingBall (stop=20.0s)                 |            66.3 |               —
+  FMU BouncingBall (stop=5.0s)                  |           103.5 |            99.4
+  --------------------------------------------- | --------------- | ---------------
+  TOTAL (sum)                                   |           364.5 |           318.9
+  AVERAGE                                       |            91.1 |           106.3
+  BEST (min)                                    |            66.3 |            76.3
+  WORST (max)                                   |           121.8 |           143.2
+
+  P95 Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000
+  --------------------------------------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |          10.430 |           9.691
+  FMU BouncingBall (stop=10.0s)                 |          19.204 |          17.718
+  FMU BouncingBall (stop=20.0s)                 |          20.038 |               —
+  FMU BouncingBall (stop=5.0s)                  |          12.480 |          13.376
+  --------------------------------------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          62.152 |          40.785
+  AVERAGE                                       |          15.538 |          13.595
+  BEST (min)                                    |          10.430 |           9.691
+  WORST (max)                                   |          20.038 |          17.718
+
+  Total results collected: 7  (4 scenarios x 2 configs)
+
+
+========================================================================================================
+  CPU / Sim-Type Comparison
+========================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           8.212 |           6.985 |           8.112
+  FMU BouncingBall (stop=10.0s)                 |          13.703 |          13.101 |               —
+  FMU BouncingBall (stop=20.0s)                 |          15.085 |               — |               —
+  FMU BouncingBall (stop=5.0s)                  |           9.663 |          10.060 |               —
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          46.663 |          30.147 |           8.112
+  AVERAGE                                       |          11.666 |          10.049 |           8.112
+  BEST (min)                                    |           8.212 |           6.985 |           8.112
+  WORST (max)                                   |          15.085 |          13.101 |           8.112
+
+  Throughput (ops/s)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           121.8 |           143.2 |           123.3
+  FMU BouncingBall (stop=10.0s)                 |            73.0 |            76.3 |               —
+  FMU BouncingBall (stop=20.0s)                 |            66.3 |               — |               —
+  FMU BouncingBall (stop=5.0s)                  |           103.5 |            99.4 |               —
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |           364.5 |           318.9 |           123.3
+  AVERAGE                                       |            91.1 |           106.3 |           123.3
+  BEST (min)                                    |            66.3 |            76.3 |           123.3
+  WORST (max)                                   |           121.8 |           143.2 |           123.3
+
+  P95 Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |          10.430 |           9.691 |          10.404
+  FMU BouncingBall (stop=10.0s)                 |          19.204 |          17.718 |               —
+  FMU BouncingBall (stop=20.0s)                 |          20.038 |               — |               —
+  FMU BouncingBall (stop=5.0s)                  |          12.480 |          13.376 |               —
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          62.152 |          40.785 |          10.404
+  AVERAGE                                       |          15.538 |          13.595 |          10.404
+  BEST (min)                                    |          10.430 |           9.691 |          10.404
+  WORST (max)                                   |          20.038 |          17.718 |          10.404
+
+  Total results collected: 8  (4 scenarios x 3 configs)
+
+
+========================================================================================================
+  CPU / Sim-Type Comparison
+========================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           8.212 |           6.985 |           8.112
+  FMU BouncingBall (stop=10.0s)                 |          13.703 |          13.101 |               —
+  FMU BouncingBall (stop=20.0s)                 |          15.085 |               — |               —
+  FMU BouncingBall (stop=5.0s)                  |           9.663 |          10.060 |          10.942
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          46.663 |          30.147 |          19.054
+  AVERAGE                                       |          11.666 |          10.049 |           9.527
+  BEST (min)                                    |           8.212 |           6.985 |           8.112
+  WORST (max)                                   |          15.085 |          13.101 |          10.942
+
+  Throughput (ops/s)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           121.8 |           143.2 |           123.3
+  FMU BouncingBall (stop=10.0s)                 |            73.0 |            76.3 |               —
+  FMU BouncingBall (stop=20.0s)                 |            66.3 |               — |               —
+  FMU BouncingBall (stop=5.0s)                  |           103.5 |            99.4 |            91.4
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |           364.5 |           318.9 |           214.7
+  AVERAGE                                       |            91.1 |           106.3 |           107.3
+  BEST (min)                                    |            66.3 |            76.3 |            91.4
+  WORST (max)                                   |           121.8 |           143.2 |           123.3
+
+  P95 Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |          10.430 |           9.691 |          10.404
+  FMU BouncingBall (stop=10.0s)                 |          19.204 |          17.718 |               —
+  FMU BouncingBall (stop=20.0s)                 |          20.038 |               — |               —
+  FMU BouncingBall (stop=5.0s)                  |          12.480 |          13.376 |          19.414
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          62.152 |          40.785 |          29.818
+  AVERAGE                                       |          15.538 |          13.595 |          14.909
+  BEST (min)                                    |          10.430 |           9.691 |          10.404
+  WORST (max)                                   |          20.038 |          17.718 |          19.414
+
+  Total results collected: 9  (4 scenarios x 3 configs)
+
+
+========================================================================================================
+  CPU / Sim-Type Comparison
+========================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           8.212 |           6.985 |           8.112
+  FMU BouncingBall (stop=10.0s)                 |          13.703 |          13.101 |               —
+  FMU BouncingBall (stop=20.0s)                 |          15.085 |          15.144 |               —
+  FMU BouncingBall (stop=5.0s)                  |           9.663 |          10.060 |          10.942
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          46.663 |          45.291 |          19.054
+  AVERAGE                                       |          11.666 |          11.323 |           9.527
+  BEST (min)                                    |           8.212 |           6.985 |           8.112
+  WORST (max)                                   |          15.085 |          15.144 |          10.942
+
+  Throughput (ops/s)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           121.8 |           143.2 |           123.3
+  FMU BouncingBall (stop=10.0s)                 |            73.0 |            76.3 |               —
+  FMU BouncingBall (stop=20.0s)                 |            66.3 |            66.0 |               —
+  FMU BouncingBall (stop=5.0s)                  |           103.5 |            99.4 |            91.4
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |           364.5 |           384.9 |           214.7
+  AVERAGE                                       |            91.1 |            96.2 |           107.3
+  BEST (min)                                    |            66.3 |            66.0 |            91.4
+  WORST (max)                                   |           121.8 |           143.2 |           123.3
+
+  P95 Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |          10.430 |           9.691 |          10.404
+  FMU BouncingBall (stop=10.0s)                 |          19.204 |          17.718 |               —
+  FMU BouncingBall (stop=20.0s)                 |          20.038 |          19.607 |               —
+  FMU BouncingBall (stop=5.0s)                  |          12.480 |          13.376 |          19.414
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          62.152 |          60.392 |          29.818
+  AVERAGE                                       |          15.538 |          15.098 |          14.909
+  BEST (min)                                    |          10.430 |           9.691 |          10.404
+  WORST (max)                                   |          20.038 |          19.607 |          19.414
+
+  Total results collected: 10  (4 scenarios x 3 configs)
+
+
+========================================================================================================
+  CPU / Sim-Type Comparison
+========================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           8.212 |           6.985 |           8.112
+  FMU BouncingBall (stop=10.0s)                 |          13.703 |          13.101 |          12.091
+  FMU BouncingBall (stop=20.0s)                 |          15.085 |          15.144 |               —
+  FMU BouncingBall (stop=5.0s)                  |           9.663 |          10.060 |          10.942
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          46.663 |          45.291 |          31.145
+  AVERAGE                                       |          11.666 |          11.323 |          10.382
+  BEST (min)                                    |           8.212 |           6.985 |           8.112
+  WORST (max)                                   |          15.085 |          15.144 |          12.091
+
+  Throughput (ops/s)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           121.8 |           143.2 |           123.3
+  FMU BouncingBall (stop=10.0s)                 |            73.0 |            76.3 |            82.7
+  FMU BouncingBall (stop=20.0s)                 |            66.3 |            66.0 |               —
+  FMU BouncingBall (stop=5.0s)                  |           103.5 |            99.4 |            91.4
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |           364.5 |           384.9 |           297.4
+  AVERAGE                                       |            91.1 |            96.2 |            99.1
+  BEST (min)                                    |            66.3 |            66.0 |            82.7
+  WORST (max)                                   |           121.8 |           143.2 |           123.3
+
+  P95 Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |          10.430 |           9.691 |          10.404
+  FMU BouncingBall (stop=10.0s)                 |          19.204 |          17.718 |          14.030
+  FMU BouncingBall (stop=20.0s)                 |          20.038 |          19.607 |               —
+  FMU BouncingBall (stop=5.0s)                  |          12.480 |          13.376 |          19.414
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          62.152 |          60.392 |          43.848
+  AVERAGE                                       |          15.538 |          15.098 |          14.616
+  BEST (min)                                    |          10.430 |           9.691 |          10.404
+  WORST (max)                                   |          20.038 |          19.607 |          19.414
+
+  Total results collected: 11  (4 scenarios x 3 configs)
+
+
+========================================================================================================
+  CPU / Sim-Type Comparison
+========================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           8.212 |           6.985 |           8.112
+  FMU BouncingBall (stop=10.0s)                 |          13.703 |          13.101 |          12.091
+  FMU BouncingBall (stop=20.0s)                 |          15.085 |          15.144 |          14.240
+  FMU BouncingBall (stop=5.0s)                  |           9.663 |          10.060 |          10.942
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          46.663 |          45.291 |          45.386
+  AVERAGE                                       |          11.666 |          11.323 |          11.346
+  BEST (min)                                    |           8.212 |           6.985 |           8.112
+  WORST (max)                                   |          15.085 |          15.144 |          14.240
+
+  Throughput (ops/s)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |           121.8 |           143.2 |           123.3
+  FMU BouncingBall (stop=10.0s)                 |            73.0 |            76.3 |            82.7
+  FMU BouncingBall (stop=20.0s)                 |            66.3 |            66.0 |            70.2
+  FMU BouncingBall (stop=5.0s)                  |           103.5 |            99.4 |            91.4
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |           364.5 |           384.9 |           367.6
+  AVERAGE                                       |            91.1 |            96.2 |            91.9
+  BEST (min)                                    |            66.3 |            66.0 |            70.2
+  WORST (max)                                   |           121.8 |           143.2 |           123.3
+
+  P95 Latency (ms)
+  Benchmark                                     | matlab-cpu-4000 | matlab-cpu-2000 | matlab-cpu-1000
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  FMU BouncingBall (stop=1.0s)                  |          10.430 |           9.691 |          10.404
+  FMU BouncingBall (stop=10.0s)                 |          19.204 |          17.718 |          14.030
+  FMU BouncingBall (stop=20.0s)                 |          20.038 |          19.607 |          20.040
+  FMU BouncingBall (stop=5.0s)                  |          12.480 |          13.376 |          19.414
+  --------------------------------------------- | --------------- | --------------- | ---------------
+  TOTAL (sum)                                   |          62.152 |          60.392 |          63.889
+  AVERAGE                                       |          15.538 |          15.098 |          15.972
+  BEST (min)                                    |          10.430 |           9.691 |          10.404
+  WORST (max)                                   |          20.038 |          19.607 |          20.040
+
+  Total results collected: 12  (4 scenarios x 3 configs)
+
+
+======================================================================================================================================================================================
+  CPU / Sim-Type Comparison
+======================================================================================================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel)
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          8.212 |                          6.985 |                          8.112 |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         13.703 |                         13.101 |                         12.091 |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         15.085 |                         15.144 |                         14.240 |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          9.663 |                         10.060 |                         10.942 |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        763.464
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         46.663 |                         45.291 |                         45.386 |                        763.464
+  AVERAGE                                       |                         11.666 |                         11.323 |                         11.346 |                        763.464
+  BEST (min)                                    |                          8.212 |                          6.985 |                          8.112 |                        763.464
+  WORST (max)                                   |                         15.085 |                         15.144 |                         14.240 |                        763.464
+
+  Throughput (ops/s)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel)
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          121.8 |                          143.2 |                          123.3 |                              —
+  FMU BouncingBall (stop=10.0s)                 |                           73.0 |                           76.3 |                           82.7 |                              —
+  FMU BouncingBall (stop=20.0s)                 |                           66.3 |                           66.0 |                           70.2 |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          103.5 |                           99.4 |                           91.4 |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                            1.3
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                          364.5 |                          384.9 |                          367.6 |                            1.3
+  AVERAGE                                       |                           91.1 |                           96.2 |                           91.9 |                            1.3
+  BEST (min)                                    |                           66.3 |                           66.0 |                           70.2 |                            1.3
+  WORST (max)                                   |                          121.8 |                          143.2 |                          123.3 |                            1.3
+
+  P95 Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel)
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                         10.430 |                          9.691 |                         10.404 |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         19.204 |                         17.718 |                         14.030 |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         20.038 |                         19.607 |                         20.040 |                              —
+  FMU BouncingBall (stop=5.0s)                  |                         12.480 |                         13.376 |                         19.414 |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        912.107
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         62.152 |                         60.392 |                         63.889 |                        912.107
+  AVERAGE                                       |                         15.538 |                         15.098 |                         15.972 |                        912.107
+  BEST (min)                                    |                         10.430 |                          9.691 |                         10.404 |                        912.107
+  WORST (max)                                   |                         20.038 |                         19.607 |                         20.040 |                        912.107
+
+  Total results collected: 13  (5 scenarios x 4 configs)
+
+
+=======================================================================================================================================================================================================================
+  CPU / Sim-Type Comparison
+=======================================================================================================================================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          8.212 |                          6.985 |                          8.112 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         13.703 |                         13.101 |                         12.091 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         15.085 |                         15.144 |                         14.240 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          9.663 |                         10.060 |                         10.942 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        763.464 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          2.734
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         46.663 |                         45.291 |                         45.386 |                        763.464 |                          2.734
+  AVERAGE                                       |                         11.666 |                         11.323 |                         11.346 |                        763.464 |                          2.734
+  BEST (min)                                    |                          8.212 |                          6.985 |                          8.112 |                        763.464 |                          2.734
+  WORST (max)                                   |                         15.085 |                         15.144 |                         14.240 |                        763.464 |                          2.734
+
+  Throughput (ops/s)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          121.8 |                          143.2 |                          123.3 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                           73.0 |                           76.3 |                           82.7 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                           66.3 |                           66.0 |                           70.2 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          103.5 |                           99.4 |                           91.4 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                            1.3 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          365.8
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                          364.5 |                          384.9 |                          367.6 |                            1.3 |                          365.8
+  AVERAGE                                       |                           91.1 |                           96.2 |                           91.9 |                            1.3 |                          365.8
+  BEST (min)                                    |                           66.3 |                           66.0 |                           70.2 |                            1.3 |                          365.8
+  WORST (max)                                   |                          121.8 |                          143.2 |                          123.3 |                            1.3 |                          365.8
+
+  P95 Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                         10.430 |                          9.691 |                         10.404 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         19.204 |                         17.718 |                         14.030 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         20.038 |                         19.607 |                         20.040 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                         12.480 |                         13.376 |                         19.414 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        912.107 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          3.358
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         62.152 |                         60.392 |                         63.889 |                        912.107 |                          3.358
+  AVERAGE                                       |                         15.538 |                         15.098 |                         15.972 |                        912.107 |                          3.358
+  BEST (min)                                    |                         10.430 |                          9.691 |                         10.404 |                        912.107 |                          3.358
+  WORST (max)                                   |                         20.038 |                         19.607 |                         20.040 |                        912.107 |                          3.358
+
+  Total results collected: 14  (6 scenarios x 5 configs)
+
+
+=======================================================================================================================================================================================================================
+  CPU / Sim-Type Comparison
+=======================================================================================================================================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          8.212 |                          6.985 |                          8.112 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         13.703 |                         13.101 |                         12.091 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         15.085 |                         15.144 |                         14.240 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          9.663 |                         10.060 |                         10.942 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        763.464 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          2.734
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          7.482
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         46.663 |                         45.291 |                         45.386 |                        763.464 |                         10.216
+  AVERAGE                                       |                         11.666 |                         11.323 |                         11.346 |                        763.464 |                          5.108
+  BEST (min)                                    |                          8.212 |                          6.985 |                          8.112 |                        763.464 |                          2.734
+  WORST (max)                                   |                         15.085 |                         15.144 |                         14.240 |                        763.464 |                          7.482
+
+  Throughput (ops/s)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          121.8 |                          143.2 |                          123.3 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                           73.0 |                           76.3 |                           82.7 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                           66.3 |                           66.0 |                           70.2 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          103.5 |                           99.4 |                           91.4 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                            1.3 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          365.8
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          133.7
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                          364.5 |                          384.9 |                          367.6 |                            1.3 |                          499.4
+  AVERAGE                                       |                           91.1 |                           96.2 |                           91.9 |                            1.3 |                          249.7
+  BEST (min)                                    |                           66.3 |                           66.0 |                           70.2 |                            1.3 |                          133.7
+  WORST (max)                                   |                          121.8 |                          143.2 |                          123.3 |                            1.3 |                          365.8
+
+  P95 Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                         10.430 |                          9.691 |                         10.404 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         19.204 |                         17.718 |                         14.030 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         20.038 |                         19.607 |                         20.040 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                         12.480 |                         13.376 |                         19.414 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        912.107 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          3.358
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                         10.179
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         62.152 |                         60.392 |                         63.889 |                        912.107 |                         13.537
+  AVERAGE                                       |                         15.538 |                         15.098 |                         15.972 |                        912.107 |                          6.769
+  BEST (min)                                    |                         10.430 |                          9.691 |                         10.404 |                        912.107 |                          3.358
+  WORST (max)                                   |                         20.038 |                         19.607 |                         20.040 |                        912.107 |                         10.179
+
+  Total results collected: 15  (7 scenarios x 5 configs)
+
+
+=======================================================================================================================================================================================================================
+  CPU / Sim-Type Comparison
+=======================================================================================================================================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          8.212 |                          6.985 |                          8.112 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         13.703 |                         13.101 |                         12.091 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         15.085 |                         15.144 |                         14.240 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          9.663 |                         10.060 |                         10.942 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        763.464 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          2.734
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          7.482
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          8.740
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         46.663 |                         45.291 |                         45.386 |                        763.464 |                         18.956
+  AVERAGE                                       |                         11.666 |                         11.323 |                         11.346 |                        763.464 |                          6.319
+  BEST (min)                                    |                          8.212 |                          6.985 |                          8.112 |                        763.464 |                          2.734
+  WORST (max)                                   |                         15.085 |                         15.144 |                         14.240 |                        763.464 |                          8.740
+
+  Throughput (ops/s)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          121.8 |                          143.2 |                          123.3 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                           73.0 |                           76.3 |                           82.7 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                           66.3 |                           66.0 |                           70.2 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          103.5 |                           99.4 |                           91.4 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                            1.3 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          365.8
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          133.7
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          114.4
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                          364.5 |                          384.9 |                          367.6 |                            1.3 |                          613.8
+  AVERAGE                                       |                           91.1 |                           96.2 |                           91.9 |                            1.3 |                          204.6
+  BEST (min)                                    |                           66.3 |                           66.0 |                           70.2 |                            1.3 |                          114.4
+  WORST (max)                                   |                          121.8 |                          143.2 |                          123.3 |                            1.3 |                          365.8
+
+  P95 Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                         10.430 |                          9.691 |                         10.404 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         19.204 |                         17.718 |                         14.030 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         20.038 |                         19.607 |                         20.040 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                         12.480 |                         13.376 |                         19.414 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        912.107 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          3.358
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                         10.179
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                         12.711
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         62.152 |                         60.392 |                         63.889 |                        912.107 |                         26.249
+  AVERAGE                                       |                         15.538 |                         15.098 |                         15.972 |                        912.107 |                          8.750
+  BEST (min)                                    |                         10.430 |                          9.691 |                         10.404 |                        912.107 |                          3.358
+  WORST (max)                                   |                         20.038 |                         19.607 |                         20.040 |                        912.107 |                         12.711
+
+  Total results collected: 16  (8 scenarios x 5 configs)
+
+
+=======================================================================================================================================================================================================================
+  CPU / Sim-Type Comparison
+=======================================================================================================================================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          8.212 |                          6.985 |                          8.112 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         13.703 |                         13.101 |                         12.091 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         15.085 |                         15.144 |                         14.240 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          9.663 |                         10.060 |                         10.942 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        763.464 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          2.734
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          7.482
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          8.740
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          7.658
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         46.663 |                         45.291 |                         45.386 |                        763.464 |                         26.614
+  AVERAGE                                       |                         11.666 |                         11.323 |                         11.346 |                        763.464 |                          6.654
+  BEST (min)                                    |                          8.212 |                          6.985 |                          8.112 |                        763.464 |                          2.734
+  WORST (max)                                   |                         15.085 |                         15.144 |                         14.240 |                        763.464 |                          8.740
+
+  Throughput (ops/s)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          121.8 |                          143.2 |                          123.3 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                           73.0 |                           76.3 |                           82.7 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                           66.3 |                           66.0 |                           70.2 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          103.5 |                           99.4 |                           91.4 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                            1.3 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          365.8
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          133.7
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          114.4
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          130.6
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                          364.5 |                          384.9 |                          367.6 |                            1.3 |                          744.4
+  AVERAGE                                       |                           91.1 |                           96.2 |                           91.9 |                            1.3 |                          186.1
+  BEST (min)                                    |                           66.3 |                           66.0 |                           70.2 |                            1.3 |                          114.4
+  WORST (max)                                   |                          121.8 |                          143.2 |                          123.3 |                            1.3 |                          365.8
+
+  P95 Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                         10.430 |                          9.691 |                         10.404 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         19.204 |                         17.718 |                         14.030 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         20.038 |                         19.607 |                         20.040 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                         12.480 |                         13.376 |                         19.414 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        912.107 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          3.358
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                         10.179
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                         12.711
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                         10.302
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         62.152 |                         60.392 |                         63.889 |                        912.107 |                         36.551
+  AVERAGE                                       |                         15.538 |                         15.098 |                         15.972 |                        912.107 |                          9.138
+  BEST (min)                                    |                         10.430 |                          9.691 |                         10.404 |                        912.107 |                          3.358
+  WORST (max)                                   |                         20.038 |                         19.607 |                         20.040 |                        912.107 |                         12.711
+
+  Total results collected: 17  (9 scenarios x 5 configs)
+
+
+=======================================================================================================================================================================================================================
+  CPU / Sim-Type Comparison
+=======================================================================================================================================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          8.212 |                          6.985 |                          8.112 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         13.703 |                         13.101 |                         12.091 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         15.085 |                         15.144 |                         14.240 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          9.663 |                         10.060 |                         10.942 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        763.464 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          2.734
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          7.482
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          8.740
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          7.658
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          7.083
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         46.663 |                         45.291 |                         45.386 |                        763.464 |                         33.697
+  AVERAGE                                       |                         11.666 |                         11.323 |                         11.346 |                        763.464 |                          6.739
+  BEST (min)                                    |                          8.212 |                          6.985 |                          8.112 |                        763.464 |                          2.734
+  WORST (max)                                   |                         15.085 |                         15.144 |                         14.240 |                        763.464 |                          8.740
+
+  Throughput (ops/s)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          121.8 |                          143.2 |                          123.3 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                           73.0 |                           76.3 |                           82.7 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                           66.3 |                           66.0 |                           70.2 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          103.5 |                           99.4 |                           91.4 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                            1.3 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          365.8
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          133.7
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          114.4
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          130.6
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          141.2
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                          364.5 |                          384.9 |                          367.6 |                            1.3 |                          885.6
+  AVERAGE                                       |                           91.1 |                           96.2 |                           91.9 |                            1.3 |                          177.1
+  BEST (min)                                    |                           66.3 |                           66.0 |                           70.2 |                            1.3 |                          114.4
+  WORST (max)                                   |                          121.8 |                          143.2 |                          123.3 |                            1.3 |                          365.8
+
+  P95 Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                         10.430 |                          9.691 |                         10.404 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         19.204 |                         17.718 |                         14.030 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         20.038 |                         19.607 |                         20.040 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                         12.480 |                         13.376 |                         19.414 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        912.107 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          3.358
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                         10.179
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                         12.711
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                         10.302
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          9.897
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         62.152 |                         60.392 |                         63.889 |                        912.107 |                         46.448
+  AVERAGE                                       |                         15.538 |                         15.098 |                         15.972 |                        912.107 |                          9.290
+  BEST (min)                                    |                         10.430 |                          9.691 |                         10.404 |                        912.107 |                          3.358
+  WORST (max)                                   |                         20.038 |                         19.607 |                         20.040 |                        912.107 |                         12.711
+
+  Total results collected: 18  (10 scenarios x 5 configs)
+
+
+=======================================================================================================================================================================================================================
+  CPU / Sim-Type Comparison
+=======================================================================================================================================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          8.212 |                          6.985 |                          8.112 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         13.703 |                         13.101 |                         12.091 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         15.085 |                         15.144 |                         14.240 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          9.663 |                         10.060 |                         10.942 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        763.464 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          2.734
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                          8.263
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          7.482
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          8.740
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          7.658
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          7.083
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         46.663 |                         45.291 |                         45.386 |                        763.464 |                         41.960
+  AVERAGE                                       |                         11.666 |                         11.323 |                         11.346 |                        763.464 |                          6.993
+  BEST (min)                                    |                          8.212 |                          6.985 |                          8.112 |                        763.464 |                          2.734
+  WORST (max)                                   |                         15.085 |                         15.144 |                         14.240 |                        763.464 |                          8.740
+
+  Throughput (ops/s)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          121.8 |                          143.2 |                          123.3 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                           73.0 |                           76.3 |                           82.7 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                           66.3 |                           66.0 |                           70.2 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          103.5 |                           99.4 |                           91.4 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                            1.3 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          365.8
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                          121.0
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          133.7
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          114.4
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          130.6
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          141.2
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                          364.5 |                          384.9 |                          367.6 |                            1.3 |                         1006.6
+  AVERAGE                                       |                           91.1 |                           96.2 |                           91.9 |                            1.3 |                          167.8
+  BEST (min)                                    |                           66.3 |                           66.0 |                           70.2 |                            1.3 |                          114.4
+  WORST (max)                                   |                          121.8 |                          143.2 |                          123.3 |                            1.3 |                          365.8
+
+  P95 Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                         10.430 |                          9.691 |                         10.404 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         19.204 |                         17.718 |                         14.030 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         20.038 |                         19.607 |                         20.040 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                         12.480 |                         13.376 |                         19.414 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        912.107 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          3.358
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                         10.688
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                         10.179
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                         12.711
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                         10.302
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          9.897
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         62.152 |                         60.392 |                         63.889 |                        912.107 |                         57.135
+  AVERAGE                                       |                         15.538 |                         15.098 |                         15.972 |                        912.107 |                          9.523
+  BEST (min)                                    |                         10.430 |                          9.691 |                         10.404 |                        912.107 |                          3.358
+  WORST (max)                                   |                         20.038 |                         19.607 |                         20.040 |                        912.107 |                         12.711
+
+  Total results collected: 19  (11 scenarios x 5 configs)
+
+
+=======================================================================================================================================================================================================================
+  CPU / Sim-Type Comparison
+=======================================================================================================================================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          8.212 |                          6.985 |                          8.112 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         13.703 |                         13.101 |                         12.091 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         15.085 |                         15.144 |                         14.240 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          9.663 |                         10.060 |                         10.942 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        763.464 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          1.856
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                          8.263
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          7.482
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          8.740
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          7.658
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          7.083
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         46.663 |                         45.291 |                         45.386 |                        763.464 |                         41.082
+  AVERAGE                                       |                         11.666 |                         11.323 |                         11.346 |                        763.464 |                          6.847
+  BEST (min)                                    |                          8.212 |                          6.985 |                          8.112 |                        763.464 |                          1.856
+  WORST (max)                                   |                         15.085 |                         15.144 |                         14.240 |                        763.464 |                          8.740
+
+  Throughput (ops/s)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                          121.8 |                          143.2 |                          123.3 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                           73.0 |                           76.3 |                           82.7 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                           66.3 |                           66.0 |                           70.2 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          103.5 |                           99.4 |                           91.4 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                            1.3 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          538.7
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                          121.0
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          133.7
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          114.4
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          130.6
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          141.2
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                          364.5 |                          384.9 |                          367.6 |                            1.3 |                         1179.6
+  AVERAGE                                       |                           91.1 |                           96.2 |                           91.9 |                            1.3 |                          196.6
+  BEST (min)                                    |                           66.3 |                           66.0 |                           70.2 |                            1.3 |                          114.4
+  WORST (max)                                   |                          121.8 |                          143.2 |                          123.3 |                            1.3 |                          538.7
+
+  P95 Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  FMU BouncingBall (stop=1.0s)                  |                         10.430 |                          9.691 |                         10.404 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         19.204 |                         17.718 |                         14.030 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         20.038 |                         19.607 |                         20.040 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                         12.480 |                         13.376 |                         19.414 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        912.107 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          2.649
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                         10.688
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                         10.179
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                         12.711
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                         10.302
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          9.897
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         62.152 |                         60.392 |                         63.889 |                        912.107 |                         56.426
+  AVERAGE                                       |                         15.538 |                         15.098 |                         15.972 |                        912.107 |                          9.404
+  BEST (min)                                    |                         10.430 |                          9.691 |                         10.404 |                        912.107 |                          2.649
+  WORST (max)                                   |                         20.038 |                         19.607 |                         20.040 |                        912.107 |                         12.711
+
+  Total results collected: 19  (11 scenarios x 5 configs)
+
+
+=======================================================================================================================================================================================================================
+  CPU / Sim-Type Comparison
+=======================================================================================================================================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  BouncingBall free-run (stop=1.0s)             |                              — |                              — |                              — |                              — |                          9.231
+  FMU BouncingBall (stop=1.0s)                  |                          8.212 |                          6.985 |                          8.112 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         13.703 |                         13.101 |                         12.091 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         15.085 |                         15.144 |                         14.240 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          9.663 |                         10.060 |                         10.942 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        763.464 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          1.856
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                          8.263
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          7.482
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          8.740
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          7.658
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          7.083
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         46.663 |                         45.291 |                         45.386 |                        763.464 |                         50.313
+  AVERAGE                                       |                         11.666 |                         11.323 |                         11.346 |                        763.464 |                          7.188
+  BEST (min)                                    |                          8.212 |                          6.985 |                          8.112 |                        763.464 |                          1.856
+  WORST (max)                                   |                         15.085 |                         15.144 |                         14.240 |                        763.464 |                          9.231
+
+  Throughput (ops/s)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  BouncingBall free-run (stop=1.0s)             |                              — |                              — |                              — |                              — |                          108.3
+  FMU BouncingBall (stop=1.0s)                  |                          121.8 |                          143.2 |                          123.3 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                           73.0 |                           76.3 |                           82.7 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                           66.3 |                           66.0 |                           70.2 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          103.5 |                           99.4 |                           91.4 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                            1.3 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          538.7
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                          121.0
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          133.7
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          114.4
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          130.6
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          141.2
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                          364.5 |                          384.9 |                          367.6 |                            1.3 |                         1287.9
+  AVERAGE                                       |                           91.1 |                           96.2 |                           91.9 |                            1.3 |                          184.0
+  BEST (min)                                    |                           66.3 |                           66.0 |                           70.2 |                            1.3 |                          108.3
+  WORST (max)                                   |                          121.8 |                          143.2 |                          123.3 |                            1.3 |                          538.7
+
+  P95 Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  BouncingBall free-run (stop=1.0s)             |                              — |                              — |                              — |                              — |                         12.175
+  FMU BouncingBall (stop=1.0s)                  |                         10.430 |                          9.691 |                         10.404 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         19.204 |                         17.718 |                         14.030 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         20.038 |                         19.607 |                         20.040 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                         12.480 |                         13.376 |                         19.414 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        912.107 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          2.649
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                         10.688
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                         10.179
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                         12.711
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                         10.302
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          9.897
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         62.152 |                         60.392 |                         63.889 |                        912.107 |                         68.601
+  AVERAGE                                       |                         15.538 |                         15.098 |                         15.972 |                        912.107 |                          9.800
+  BEST (min)                                    |                         10.430 |                          9.691 |                         10.404 |                        912.107 |                          2.649
+  WORST (max)                                   |                         20.038 |                         19.607 |                         20.040 |                        912.107 |                         12.711
+
+  Total results collected: 20  (12 scenarios x 5 configs)
+
+
+=======================================================================================================================================================================================================================
+  CPU / Sim-Type Comparison
+=======================================================================================================================================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  BouncingBall free-run (stop=1.0s)             |                              — |                              — |                              — |                              — |                          9.231
+  BouncingBall free-run (stop=5.0s)             |                              — |                              — |                              — |                              — |                         11.695
+  FMU BouncingBall (stop=1.0s)                  |                          8.212 |                          6.985 |                          8.112 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         13.703 |                         13.101 |                         12.091 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         15.085 |                         15.144 |                         14.240 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          9.663 |                         10.060 |                         10.942 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        763.464 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          1.856
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                          8.263
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          7.482
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          8.740
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          7.658
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          7.083
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         46.663 |                         45.291 |                         45.386 |                        763.464 |                         62.008
+  AVERAGE                                       |                         11.666 |                         11.323 |                         11.346 |                        763.464 |                          7.751
+  BEST (min)                                    |                          8.212 |                          6.985 |                          8.112 |                        763.464 |                          1.856
+  WORST (max)                                   |                         15.085 |                         15.144 |                         14.240 |                        763.464 |                         11.695
+
+  Throughput (ops/s)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  BouncingBall free-run (stop=1.0s)             |                              — |                              — |                              — |                              — |                          108.3
+  BouncingBall free-run (stop=5.0s)             |                              — |                              — |                              — |                              — |                           85.5
+  FMU BouncingBall (stop=1.0s)                  |                          121.8 |                          143.2 |                          123.3 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                           73.0 |                           76.3 |                           82.7 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                           66.3 |                           66.0 |                           70.2 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          103.5 |                           99.4 |                           91.4 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                            1.3 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          538.7
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                          121.0
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          133.7
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          114.4
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          130.6
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          141.2
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                          364.5 |                          384.9 |                          367.6 |                            1.3 |                         1373.4
+  AVERAGE                                       |                           91.1 |                           96.2 |                           91.9 |                            1.3 |                          171.7
+  BEST (min)                                    |                           66.3 |                           66.0 |                           70.2 |                            1.3 |                           85.5
+  WORST (max)                                   |                          121.8 |                          143.2 |                          123.3 |                            1.3 |                          538.7
+
+  P95 Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  BouncingBall free-run (stop=1.0s)             |                              — |                              — |                              — |                              — |                         12.175
+  BouncingBall free-run (stop=5.0s)             |                              — |                              — |                              — |                              — |                         15.293
+  FMU BouncingBall (stop=1.0s)                  |                         10.430 |                          9.691 |                         10.404 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         19.204 |                         17.718 |                         14.030 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         20.038 |                         19.607 |                         20.040 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                         12.480 |                         13.376 |                         19.414 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        912.107 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          2.649
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                         10.688
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                         10.179
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                         12.711
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                         10.302
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          9.897
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         62.152 |                         60.392 |                         63.889 |                        912.107 |                         83.894
+  AVERAGE                                       |                         15.538 |                         15.098 |                         15.972 |                        912.107 |                         10.487
+  BEST (min)                                    |                         10.430 |                          9.691 |                         10.404 |                        912.107 |                          2.649
+  WORST (max)                                   |                         20.038 |                         19.607 |                         20.040 |                        912.107 |                         15.293
+
+  Total results collected: 21  (13 scenarios x 5 configs)
+
+
+=======================================================================================================================================================================================================================
+  CPU / Sim-Type Comparison
+=======================================================================================================================================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  BouncingBall free-run (stop=1.0s)             |                              — |                              — |                              — |                              — |                          9.231
+  BouncingBall free-run (stop=10.0s)            |                              — |                              — |                              — |                              — |                         19.167
+  BouncingBall free-run (stop=5.0s)             |                              — |                              — |                              — |                              — |                         11.695
+  FMU BouncingBall (stop=1.0s)                  |                          8.212 |                          6.985 |                          8.112 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         13.703 |                         13.101 |                         12.091 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         15.085 |                         15.144 |                         14.240 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          9.663 |                         10.060 |                         10.942 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        763.464 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          1.856
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                          8.263
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          7.482
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          8.740
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          7.658
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          7.083
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         46.663 |                         45.291 |                         45.386 |                        763.464 |                         81.174
+  AVERAGE                                       |                         11.666 |                         11.323 |                         11.346 |                        763.464 |                          9.019
+  BEST (min)                                    |                          8.212 |                          6.985 |                          8.112 |                        763.464 |                          1.856
+  WORST (max)                                   |                         15.085 |                         15.144 |                         14.240 |                        763.464 |                         19.167
+
+  Throughput (ops/s)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  BouncingBall free-run (stop=1.0s)             |                              — |                              — |                              — |                              — |                          108.3
+  BouncingBall free-run (stop=10.0s)            |                              — |                              — |                              — |                              — |                           52.2
+  BouncingBall free-run (stop=5.0s)             |                              — |                              — |                              — |                              — |                           85.5
+  FMU BouncingBall (stop=1.0s)                  |                          121.8 |                          143.2 |                          123.3 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                           73.0 |                           76.3 |                           82.7 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                           66.3 |                           66.0 |                           70.2 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          103.5 |                           99.4 |                           91.4 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                            1.3 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          538.7
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                          121.0
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          133.7
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          114.4
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          130.6
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          141.2
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                          364.5 |                          384.9 |                          367.6 |                            1.3 |                         1425.6
+  AVERAGE                                       |                           91.1 |                           96.2 |                           91.9 |                            1.3 |                          158.4
+  BEST (min)                                    |                           66.3 |                           66.0 |                           70.2 |                            1.3 |                           52.2
+  WORST (max)                                   |                          121.8 |                          143.2 |                          123.3 |                            1.3 |                          538.7
+
+  P95 Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  BouncingBall free-run (stop=1.0s)             |                              — |                              — |                              — |                              — |                         12.175
+  BouncingBall free-run (stop=10.0s)            |                              — |                              — |                              — |                              — |                         25.292
+  BouncingBall free-run (stop=5.0s)             |                              — |                              — |                              — |                              — |                         15.293
+  FMU BouncingBall (stop=1.0s)                  |                         10.430 |                          9.691 |                         10.404 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         19.204 |                         17.718 |                         14.030 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         20.038 |                         19.607 |                         20.040 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                         12.480 |                         13.376 |                         19.414 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        912.107 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          2.649
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                         10.688
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                         10.179
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                         12.711
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                         10.302
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          9.897
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         62.152 |                         60.392 |                         63.889 |                        912.107 |                        109.186
+  AVERAGE                                       |                         15.538 |                         15.098 |                         15.972 |                        912.107 |                         12.132
+  BEST (min)                                    |                         10.430 |                          9.691 |                         10.404 |                        912.107 |                          2.649
+  WORST (max)                                   |                         20.038 |                         19.607 |                         20.040 |                        912.107 |                         25.292
+
+  Total results collected: 22  (14 scenarios x 5 configs)
+
+
+=======================================================================================================================================================================================================================
+  CPU / Sim-Type Comparison
+=======================================================================================================================================================================================================================
+
+  Mean Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  BouncingBall free-run (stop=1.0s)             |                              — |                              — |                              — |                              — |                          9.231
+  BouncingBall free-run (stop=10.0s)            |                              — |                              — |                              — |                              — |                         19.167
+  BouncingBall free-run (stop=20.0s)            |                              — |                              — |                              — |                              — |                         19.305
+  BouncingBall free-run (stop=5.0s)             |                              — |                              — |                              — |                              — |                         11.695
+  FMU BouncingBall (stop=1.0s)                  |                          8.212 |                          6.985 |                          8.112 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         13.703 |                         13.101 |                         12.091 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         15.085 |                         15.144 |                         14.240 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          9.663 |                         10.060 |                         10.942 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        763.464 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          1.856
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                          8.263
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          7.482
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          8.740
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          7.658
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          7.083
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         46.663 |                         45.291 |                         45.386 |                        763.464 |                        100.480
+  AVERAGE                                       |                         11.666 |                         11.323 |                         11.346 |                        763.464 |                         10.048
+  BEST (min)                                    |                          8.212 |                          6.985 |                          8.112 |                        763.464 |                          1.856
+  WORST (max)                                   |                         15.085 |                         15.144 |                         14.240 |                        763.464 |                         19.305
+
+  Throughput (ops/s)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  BouncingBall free-run (stop=1.0s)             |                              — |                              — |                              — |                              — |                          108.3
+  BouncingBall free-run (stop=10.0s)            |                              — |                              — |                              — |                              — |                           52.2
+  BouncingBall free-run (stop=20.0s)            |                              — |                              — |                              — |                              — |                           51.8
+  BouncingBall free-run (stop=5.0s)             |                              — |                              — |                              — |                              — |                           85.5
+  FMU BouncingBall (stop=1.0s)                  |                          121.8 |                          143.2 |                          123.3 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                           73.0 |                           76.3 |                           82.7 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                           66.3 |                           66.0 |                           70.2 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                          103.5 |                           99.4 |                           91.4 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                            1.3 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          538.7
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                          121.0
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                          133.7
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                          114.4
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                          130.6
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          141.2
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                          364.5 |                          384.9 |                          367.6 |                            1.3 |                         1477.4
+  AVERAGE                                       |                           91.1 |                           96.2 |                           91.9 |                            1.3 |                          147.7
+  BEST (min)                                    |                           66.3 |                           66.0 |                           70.2 |                            1.3 |                           51.8
+  WORST (max)                                   |                          121.8 |                          143.2 |                          123.3 |                            1.3 |                          538.7
+
+  P95 Latency (ms)
+  Benchmark                                     |                matlab-cpu-4000 |                matlab-cpu-2000 |                matlab-cpu-1000 | matlab-cpu-1000 (matlab_wheel) |                       cpu-4000
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  BouncingBall free-run (stop=1.0s)             |                              — |                              — |                              — |                              — |                         12.175
+  BouncingBall free-run (stop=10.0s)            |                              — |                              — |                              — |                              — |                         25.292
+  BouncingBall free-run (stop=20.0s)            |                              — |                              — |                              — |                              — |                         26.436
+  BouncingBall free-run (stop=5.0s)             |                              — |                              — |                              — |                              — |                         15.293
+  FMU BouncingBall (stop=1.0s)                  |                         10.430 |                          9.691 |                         10.404 |                              — |                              —
+  FMU BouncingBall (stop=10.0s)                 |                         19.204 |                         17.718 |                         14.030 |                              — |                              —
+  FMU BouncingBall (stop=20.0s)                 |                         20.038 |                         19.607 |                         20.040 |                              — |                              —
+  FMU BouncingBall (stop=5.0s)                  |                         12.480 |                         13.376 |                         19.414 |                              — |                              —
+  MATLAB package init+terminate                 |                              — |                              — |                              — |                        912.107 |                              —
+  Model description load                        |                              — |                              — |                              — |                              — |                          2.649
+  Rapid-fire streaming simulation               |                              — |                              — |                              — |                              — |                         10.688
+  Simulink instant eval (start==stop)           |                              — |                              — |                              — |                              — |                         10.179
+  Simulink time-series (10 points)              |                              — |                              — |                              — |                              — |                         12.711
+  Simulink time-series (100 points)             |                              — |                              — |                              — |                              — |                         10.302
+  Simulink time-series (1000 points)            |                              — |                              — |                              — |                              — |                          9.897
+  --------------------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------
+  TOTAL (sum)                                   |                         62.152 |                         60.392 |                         63.889 |                        912.107 |                        135.622
+  AVERAGE                                       |                         15.538 |                         15.098 |                         15.972 |                        912.107 |                         13.562
+  BEST (min)                                    |                         10.430 |                          9.691 |                         10.404 |                        912.107 |                          2.649
+  WORST (max)                                   |                         20.038 |                         19.607 |                         20.040 |                        912.107 |                         26.436
+
+  Total results collected: 23  (15 scenarios x 5 configs)
+
