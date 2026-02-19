@@ -134,7 +134,6 @@ deployments:
       - name: run_label
         inputType: FreeText
         value: cpu-4000
-
   - name: MATLAB Benchmark CPU-1000
     application: benchmark-matlab
     version: latest
@@ -174,12 +173,15 @@ deployments:
         value: benchmark-results
       - name: iterations
         inputType: FreeText
+        description: Number of timed iterations per benchmark scenario
         value: 100
       - name: warmup
         inputType: FreeText
+        description: Warmup iterations before timing begins
         value: 5
       - name: run_label
         inputType: FreeText
+        description: Label to tag results (e.g. matlab-cpu-1000)
         value: matlab-cpu-2000
   - name: MATLAB Benchmark CPU-4000
     application: benchmark-matlab
@@ -204,7 +206,6 @@ deployments:
       - name: run_label
         inputType: FreeText
         value: matlab-cpu-4000
-
   - name: Benchmark Compare
     application: benchmark-compare
     version: latest
