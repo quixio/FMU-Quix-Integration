@@ -112,29 +112,6 @@ deployments:
         inputType: FreeText
         description: Label to tag results (e.g. cpu-200, cpu-500, cpu-1000)
         value: cpu-2000
-  - name: MATLAB Benchmark CPU-4000
-    application: benchmark-matlab
-    version: latest
-    deploymentType: Job
-    resources:
-      cpu: 4000
-      memory: 2000
-      replicas: 1
-    variables:
-      - name: output
-        inputType: OutputTopic
-        description: Topic to publish benchmark results to
-        required: true
-        value: benchmark-results
-      - name: iterations
-        inputType: FreeText
-        value: 100
-      - name: warmup
-        inputType: FreeText
-        value: 5
-      - name: run_label
-        inputType: FreeText
-        value: matlab-cpu-4000
   - name: Benchmark Compare
     application: benchmark-compare
     version: latest
